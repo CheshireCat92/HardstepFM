@@ -25,6 +25,9 @@
     IBOutlet UIToolbar *toolBar;
     IBOutlet UIBarButtonItem *playButton;
     IBOutlet UIBarButtonItem *pauseButton;
+    IBOutlet UILabel *memoryLoad;
+    IBOutlet UILabel *timePlaying;
+    IBOutlet UILabel *bpmInfo;
 }
 
 @property (strong, nonatomic) IBOutlet UIToolbar *volume;

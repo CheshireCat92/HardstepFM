@@ -68,10 +68,6 @@ static Float64 secondsWithCMTimeOrZeroIfInvalid(CMTime time) {
                     NSArray *meta = [playerItem timedMetadata];
                     for (AVMetadataItem *metaItem in meta)
                     {
-//                        if(nowPlaying.hidden == YES)
-//                        {
-//                            nowPlaying.hidden = NO;
-//                        }
                         NSString *source = metaItem.stringValue;
                         nowPlaying.text = [NSString stringWithFormat:@"%@",source];
                     }
