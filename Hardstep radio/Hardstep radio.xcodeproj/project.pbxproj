@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4502D0F918C9F7EE00C25E76 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4502D0F718C9F7EE00C25E76 /* CoreMedia.framework */; };
+		4502D0FA18C9F7EE00C25E76 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4502D0F818C9F7EE00C25E76 /* MediaPlayer.framework */; };
+		4502D0FC18C9F7F800C25E76 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4502D0FB18C9F7F800C25E76 /* AVFoundation.framework */; };
 		45237B2618C9CCBC00A20A61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45237B2518C9CCBC00A20A61 /* Foundation.framework */; };
 		45237B2818C9CCBC00A20A61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45237B2718C9CCBC00A20A61 /* CoreGraphics.framework */; };
 		45237B2A18C9CCBC00A20A61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45237B2918C9CCBC00A20A61 /* UIKit.framework */; };
@@ -21,6 +24,10 @@
 		45237B4718C9CCBC00A20A61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45237B2918C9CCBC00A20A61 /* UIKit.framework */; };
 		45237B4F18C9CCBC00A20A61 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45237B4D18C9CCBC00A20A61 /* InfoPlist.strings */; };
 		45237B5118C9CCBC00A20A61 /* Hardstep_radioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45237B5018C9CCBC00A20A61 /* Hardstep_radioTests.m */; };
+		4566A4A718C9FCDF002106B9 /* play-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4566A4A518C9FCDF002106B9 /* play-50.png */; };
+		4566A4A818C9FCDF002106B9 /* pause-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4566A4A618C9FCDF002106B9 /* pause-50.png */; };
+		4566A4AC18C9FD86002106B9 /* high_volume-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 4566A4AB18C9FD86002106B9 /* high_volume-32.png */; };
+		4566A4AE18CA04EB002106B9 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4566A4AD18CA04EB002106B9 /* logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4502D0F718C9F7EE00C25E76 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		4502D0F818C9F7EE00C25E76 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		4502D0FB18C9F7F800C25E76 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		45237B2218C9CCBC00A20A61 /* Hardstep radio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hardstep radio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45237B2518C9CCBC00A20A61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		45237B2718C9CCBC00A20A61 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +63,10 @@
 		45237B4C18C9CCBC00A20A61 /* Hardstep radioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hardstep radioTests-Info.plist"; sourceTree = "<group>"; };
 		45237B4E18C9CCBC00A20A61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		45237B5018C9CCBC00A20A61 /* Hardstep_radioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hardstep_radioTests.m; sourceTree = "<group>"; };
+		4566A4A518C9FCDF002106B9 /* play-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-50.png"; sourceTree = "<group>"; };
+		4566A4A618C9FCDF002106B9 /* pause-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause-50.png"; sourceTree = "<group>"; };
+		4566A4AB18C9FD86002106B9 /* high_volume-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "high_volume-32.png"; sourceTree = "<group>"; };
+		4566A4AD18CA04EB002106B9 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +74,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4502D0FC18C9F7F800C25E76 /* AVFoundation.framework in Frameworks */,
+				4502D0F918C9F7EE00C25E76 /* CoreMedia.framework in Frameworks */,
+				4502D0FA18C9F7EE00C25E76 /* MediaPlayer.framework in Frameworks */,
 				45237B2818C9CCBC00A20A61 /* CoreGraphics.framework in Frameworks */,
 				45237B2A18C9CCBC00A20A61 /* UIKit.framework in Frameworks */,
 				45237B2618C9CCBC00A20A61 /* Foundation.framework in Frameworks */,
@@ -101,6 +118,9 @@
 		45237B2418C9CCBC00A20A61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4502D0FB18C9F7F800C25E76 /* AVFoundation.framework */,
+				4502D0F718C9F7EE00C25E76 /* CoreMedia.framework */,
+				4502D0F818C9F7EE00C25E76 /* MediaPlayer.framework */,
 				45237B2518C9CCBC00A20A61 /* Foundation.framework */,
 				45237B2718C9CCBC00A20A61 /* CoreGraphics.framework */,
 				45237B2918C9CCBC00A20A61 /* UIKit.framework */,
@@ -126,6 +146,10 @@
 		45237B2C18C9CCBC00A20A61 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4566A4AD18CA04EB002106B9 /* logo.png */,
+				4566A4A518C9FCDF002106B9 /* play-50.png */,
+				4566A4AB18C9FD86002106B9 /* high_volume-32.png */,
+				4566A4A618C9FCDF002106B9 /* pause-50.png */,
 				45237B2D18C9CCBC00A20A61 /* Hardstep radio-Info.plist */,
 				45237B2E18C9CCBC00A20A61 /* InfoPlist.strings */,
 				45237B3118C9CCBC00A20A61 /* main.m */,
@@ -230,7 +254,11 @@
 			files = (
 				45237B3E18C9CCBC00A20A61 /* Images.xcassets in Resources */,
 				45237B3018C9CCBC00A20A61 /* InfoPlist.strings in Resources */,
+				4566A4A718C9FCDF002106B9 /* play-50.png in Resources */,
 				45237B3918C9CCBC00A20A61 /* Main.storyboard in Resources */,
+				4566A4AE18CA04EB002106B9 /* logo.png in Resources */,
+				4566A4AC18C9FD86002106B9 /* high_volume-32.png in Resources */,
+				4566A4A818C9FCDF002106B9 /* pause-50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +488,7 @@
 				45237B5618C9CCBC00A20A61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		45237B5718C9CCBC00A20A61 /* Build configuration list for PBXNativeTarget "Hardstep radioTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +497,7 @@
 				45237B5918C9CCBC00A20A61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
