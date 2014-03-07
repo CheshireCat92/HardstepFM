@@ -21,14 +21,15 @@
     NSURL *mURL;
     
     IBOutlet UIImageView *logo;
-    IBOutlet UILabel *nowplaying;
+    IBOutlet UILabel *nowPlaying;
     IBOutlet UIToolbar *toolBar;
     IBOutlet UIBarButtonItem *playButton;
     IBOutlet UIBarButtonItem *pauseButton;
 }
 
+@property (strong, nonatomic) IBOutlet UIToolbar *volume;
 @property (nonatomic) BOOL *allowsAirPlay;
-@property (nonatomic, retain) IBOutlet UILabel *nowplaying;
+@property (nonatomic, retain) IBOutlet UILabel *nowPlaying;
 @property (retain) IBOutlet UIToolbar *toolBar;
 @property (retain) IBOutlet UIBarButtonItem *playButton;
 @property (retain) IBOutlet UIBarButtonItem *pauseButton;
@@ -39,7 +40,7 @@
 - (BOOL)isPlaying;
 - (void)showPauseButton;
 - (void)showPlayButton;
-- (void)playpause;
+- (void)playPause;
 - (void)enablePlayerButtons;
 - (void)disablePlayerButtons;
 

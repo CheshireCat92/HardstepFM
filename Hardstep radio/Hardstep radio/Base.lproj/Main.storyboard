@@ -4,37 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="f9K-zZ-VCg"/>
-                        <viewControllerLayoutGuide type="bottom" id="5Eq-ox-Q8T"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ata-pU-a7F">
-                                <rect key="frame" x="20" y="20" width="280" height="138"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jg9-lp-OfZ">
-                                <rect key="frame" x="20" y="273" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.9960784912109375" green="0.99215692281723022" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.090196080505847931" green="0.27450981736183167" blue="0.42352944612503052" alpha="1" colorSpace="deviceRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1663" y="254"/>
-        </scene>
         <!--View Controller - Радио-->
         <scene sceneID="ZUR-OI-Drs">
             <objects>
@@ -57,13 +26,6 @@
                                 <rect key="frame" x="0.0" y="475" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem style="plain" id="Mhw-Qj-qz2">
-                                        <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="eNc-NY-24g">
-                                            <rect key="frame" x="14" y="7" width="184" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </slider>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="LNb-SB-mHR"/>
                                     <barButtonItem image="play-50.png" id="GU4-HJ-D68">
                                         <connections>
                                             <action selector="play:" destination="Yo5-1R-ZXd" id="iDU-pw-L8t"/>
@@ -74,6 +36,7 @@
                                             <action selector="pause:" destination="Yo5-1R-ZXd" id="kYP-CD-iPl"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="LNb-SB-mHR"/>
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="7SW-da-HDx">
@@ -86,15 +49,16 @@
                     <tabBarItem key="tabBarItem" title="Радио" image="high_volume-32.png" id="Jx4-4P-wxR"/>
                     <connections>
                         <outlet property="logo" destination="7SW-da-HDx" id="YwC-Gb-D82"/>
-                        <outlet property="nowplaying" destination="3ps-hN-pFl" id="vE6-Ey-5x6"/>
+                        <outlet property="nowPlaying" destination="3ps-hN-pFl" id="3bV-f7-Rfx"/>
                         <outlet property="pauseButton" destination="SJ4-gL-QDZ" id="gyQ-7K-itS"/>
                         <outlet property="playButton" destination="GU4-HJ-D68" id="vj7-2e-q3o"/>
                         <outlet property="toolBar" destination="BXQ-Nf-NIu" id="fMY-Ri-orZ"/>
+                        <outlet property="volume" destination="BXQ-Nf-NIu" id="rsh-0z-J9j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nNj-k8-TDv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="938" y="-73"/>
+            <point key="canvasLocation" x="938" y="-87"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Qty-pK-MLs">
