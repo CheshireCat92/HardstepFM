@@ -18,7 +18,6 @@
     AVAsset *asset;
     AVPlayerItem *playerItem;
     AVPlayer *player;
-    NSURL *mURL;
     
     IBOutlet UIImageView *logo;
     IBOutlet UILabel *nowPlaying;

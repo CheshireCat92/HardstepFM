@@ -31,6 +31,15 @@
     [playerItem addObserver:self forKeyPath:@"timedMetadata" options:NSKeyValueObservingOptionNew context:nil];
     [player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     
+    if ([self isPlaying])
+    {
+        [self showPauseButton];
+    }
+    else
+    {
+        [self showPlayButton];
+    }
+    
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
@@ -78,7 +87,6 @@ static Float64 secondsWithCMTimeOrZeroIfInvalid(CMTime time)
                             nowPlaying.hidden = NO;
                         }
                         NSString *source = metaItem.stringValue;
-                        NSLog(@"%@",source);
                         nowPlaying.text = [NSString stringWithFormat:@"%@",source];
                     }
                 }
@@ -110,18 +118,25 @@ static Float64 secondsWithCMTimeOrZeroIfInvalid(CMTime time)
 
 - (void)playPause
 {
-    if ([self isPlaying]) {
+    if ([self isPlaying])
+    {
         [self showPauseButton];
-    } else {
+    }
+    else
+    {
         [self showPlayButton];
     }
 }
 
-- (void)togglePlayPause {
-    if ([self isPlaying]) {
+- (void)togglePlayPause
+{
+    if ([self isPlaying])
+    {
         [player pause];
         [self showPlayButton];
-    } else {
+    }
+    else
+    {
         [player play];
         [self showPauseButton];
     }
@@ -151,13 +166,16 @@ static Float64 secondsWithCMTimeOrZeroIfInvalid(CMTime time)
     [self showPlayButton];
 }
 
--(BOOL)canBecomeFirstResponder {
+-(BOOL)canBecomeFirstResponder
+{
     return YES;
 }
 
-- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
     NSLog(@"remoteControlReceivedWithEvent");
-    switch (event.subtype) {
+    switch (event.subtype)
+    {
         case UIEventSubtypeRemoteControlTogglePlayPause:
             [self togglePlayPause];
             break;
