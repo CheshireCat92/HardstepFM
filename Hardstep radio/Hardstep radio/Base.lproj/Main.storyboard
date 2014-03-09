@@ -28,12 +28,12 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="0.023529414087533951" green="0.0039215688593685627" blue="0.0039215688593685627" alpha="1" colorSpace="deviceRGB"/>
                                 <items>
-                                    <barButtonItem image="play-50.png" id="GU4-HJ-D68">
+                                    <barButtonItem style="plain" systemItem="play" id="GU4-HJ-D68">
                                         <connections>
                                             <action selector="play:" destination="Yo5-1R-ZXd" id="iDU-pw-L8t"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="pause-50.png" id="SJ4-gL-QDZ">
+                                    <barButtonItem style="plain" systemItem="pause" id="SJ4-gL-QDZ">
                                         <connections>
                                             <action selector="pause:" destination="Yo5-1R-ZXd" id="kYP-CD-iPl"/>
                                         </connections>
@@ -53,7 +53,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MA1-I7-Zil">
-                                <rect key="frame" x="0.0" y="453" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="456" width="320" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kap-Pm-1Mh">
@@ -109,7 +109,7 @@
                 <tabBarController definesPresentationContext="YES" id="h9Q-Nc-w7A" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="GK3-kd-a21">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -160,8 +160,6 @@
     <resources>
         <image name="high_volume-32.png" width="32" height="32"/>
         <image name="logo.png" width="1024" height="450"/>
-        <image name="pause-50.png" width="50" height="50"/>
-        <image name="play-50.png" width="50" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

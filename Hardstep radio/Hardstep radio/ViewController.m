@@ -22,7 +22,7 @@
     
     NSString *stringURL = @"http://89.221.207.241:8888/";
     NSURL *streamURL = [NSURL URLWithString:stringURL];
-
+    
     asset = [AVURLAsset URLAssetWithURL:streamURL options:nil];
     playerItem = [AVPlayerItem playerItemWithAsset:asset];
     player = [AVPlayer playerWithPlayerItem:playerItem];
@@ -30,24 +30,30 @@
     
     [playerItem addObserver:self forKeyPath:@"timedMetadata" options:NSKeyValueObservingOptionNew context:nil];
     [player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-
+    
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
 
-static Float64 secondsWithCMTimeOrZeroIfInvalid(CMTime time) {
+static Float64 secondsWithCMTimeOrZeroIfInvalid(CMTime time)
+{
     return CMTIME_IS_INVALID(time) ? 0.0f : CMTimeGetSeconds(time);
 }
 
-- (Float64)durationInSeconds {
+- (Float64)durationInSeconds
+{
     return secondsWithCMTimeOrZeroIfInvalid(self.movieDuration);
+}
+
+- (void)handleDurationDidChange
+{
+    movieDuration = player.currentItem.duration;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                         change:(NSDictionary *)change context:(void *)context
 {
-    
     if ([keyPath isEqualToString:@"status"])
     {
         AVPlayerItem *pItem = (AVPlayerItem *)object;
@@ -56,7 +62,6 @@ static Float64 secondsWithCMTimeOrZeroIfInvalid(CMTime time) {
             [self playPause];
         }
     }
-    
     if ([keyPath isEqualToString:@"timedMetadata"] && [self isPlaying])
     {
         for (AVAssetTrack *track in player.currentItem.tracks)
@@ -68,7 +73,12 @@ static Float64 secondsWithCMTimeOrZeroIfInvalid(CMTime time) {
                     NSArray *meta = [playerItem timedMetadata];
                     for (AVMetadataItem *metaItem in meta)
                     {
+                        if(nowPlaying.hidden == YES)
+                        {
+                            nowPlaying.hidden = NO;
+                        }
                         NSString *source = metaItem.stringValue;
+                        NSLog(@"%@",source);
                         nowPlaying.text = [NSString stringWithFormat:@"%@",source];
                     }
                 }
@@ -100,12 +110,20 @@ static Float64 secondsWithCMTimeOrZeroIfInvalid(CMTime time) {
 
 - (void)playPause
 {
-    if ([self isPlaying])
-    {
+    if ([self isPlaying]) {
         [self showPauseButton];
-    } else
-    {
+    } else {
         [self showPlayButton];
+    }
+}
+
+- (void)togglePlayPause {
+    if ([self isPlaying]) {
+        [player pause];
+        [self showPlayButton];
+    } else {
+        [player play];
+        [self showPauseButton];
     }
 }
 
@@ -133,26 +151,11 @@ static Float64 secondsWithCMTimeOrZeroIfInvalid(CMTime time) {
     [self showPlayButton];
 }
 
-- (void)togglePlayPause
-{
-    if ([self isPlaying])
-    {
-        [player pause];
-        [self showPlayButton];
-    } else {
-        [player play];
-        [self showPauseButton];
-    }
-}
-
-#pragma mark - lifecycle application
-
--(BOOL)canBecomeFirstResponder
-{
+-(BOOL)canBecomeFirstResponder {
     return YES;
 }
-- (void)remoteControlReceivedWithEvent:(UIEvent *)event
-{
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
     NSLog(@"remoteControlReceivedWithEvent");
     switch (event.subtype) {
         case UIEventSubtypeRemoteControlTogglePlayPause:
@@ -182,15 +185,13 @@ static Float64 secondsWithCMTimeOrZeroIfInvalid(CMTime time) {
     [super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     [self becomeFirstResponder];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [self resignFirstResponder];
