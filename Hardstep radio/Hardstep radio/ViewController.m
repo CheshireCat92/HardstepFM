@@ -31,14 +31,7 @@
     [playerItem addObserver:self forKeyPath:@"timedMetadata" options:NSKeyValueObservingOptionNew context:nil];
     [player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     
-    if ([self isPlaying])
-    {
-        [self showPauseButton];
-    }
-    else
-    {
-        [self showPlayButton];
-    }
+    [self playPause];
     
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
@@ -75,6 +68,7 @@ static Float64 secondsWithCMTimeOrZeroIfInvalid(CMTime time)
     {
         for (AVAssetTrack *track in player.currentItem.tracks)
         {
+            NSLog(@"%@",track);
             for (AVPlayerItemTrack *item in player.currentItem.tracks)
             {
                 if ([item.assetTrack.mediaType isEqual:AVMediaTypeAudio])
