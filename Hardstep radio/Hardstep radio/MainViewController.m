@@ -13,7 +13,7 @@
 @end
 
 @implementation MainViewController
-@synthesize infoButton, playButton, pauseButton, nowPlaying;
+@synthesize infoButton, playButton, pauseButton, nowPlaying, slides;
 
 #pragma mark LifeCycle
 
@@ -34,6 +34,7 @@
     
     [playerItem addObserver:self forKeyPath:@"timedMetadata" options:NSKeyValueObservingOptionNew context:nil];
     [player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    
     
     [self playPause];
     
@@ -108,6 +109,12 @@
 }
 
 #pragma mark Actions
+
+- (IBAction)changeVolume:(id)sender
+{
+    //Action для регулятора громкости, необходимо синхронизировать вместе с системным
+    [player setVolume:[slides value]];
+}
 
 - (IBAction)infoButtonPress:(id)sender
 {
