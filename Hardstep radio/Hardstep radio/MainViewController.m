@@ -15,13 +15,18 @@
 @implementation MainViewController
 @synthesize infoButton, playButton, pauseButton, nowPlaying;
 
+#pragma mark LifeCycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    //Адрес потока
     NSString *stringURL = @"http://89.221.207.241:8888/";
     NSURL *streamURL = [NSURL URLWithString:stringURL];
     
+    
+    //Настройки класса плеера
     asset = [AVURLAsset URLAssetWithURL:streamURL options:nil];
     playerItem = [AVPlayerItem playerItemWithAsset:asset];
     player = [AVPlayer playerWithPlayerItem:playerItem];
@@ -37,6 +42,7 @@
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
 
+#pragma mark Funktions
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                         change:(NSDictionary *)change context:(void *)context
@@ -55,6 +61,7 @@
         {
             if ([item.assetTrack.mediaType isEqual:AVMediaTypeAudio])
             {
+                //Обработка мета данных
                 NSArray *meta = [playerItem timedMetadata];
                 for (AVMetadataItem *metaItem in meta)
                 {
@@ -99,6 +106,8 @@
 {
     
 }
+
+#pragma mark Actions
 
 - (IBAction)infoButtonPress:(id)sender
 {
