@@ -51,23 +51,20 @@
     }
     if ([keyPath isEqualToString:@"timedMetadata"] && [self isPlaying])
     {
-        for (AVAssetTrack *track in player.currentItem.tracks)
+        for (AVPlayerItemTrack *item in player.currentItem.tracks)
         {
-            NSLog(@"%@",track);
-            for (AVPlayerItemTrack *item in player.currentItem.tracks)
+            if ([item.assetTrack.mediaType isEqual:AVMediaTypeAudio])
             {
-                if ([item.assetTrack.mediaType isEqual:AVMediaTypeAudio])
+                NSArray *meta = [playerItem timedMetadata];
+                for (AVMetadataItem *metaItem in meta)
                 {
-                    NSArray *meta = [playerItem timedMetadata];
-                    for (AVMetadataItem *metaItem in meta)
+                    if(nowPlaying.hidden == YES)
                     {
-                        if(nowPlaying.hidden == YES)
-                        {
-                            nowPlaying.hidden = NO;
-                        }
-                        NSString *source = metaItem.stringValue;
-                        nowPlaying.text = [NSString stringWithFormat:@"%@",source];
+                        nowPlaying.hidden = NO;
                     }
+                    NSString *source = metaItem.stringValue;
+                    nowPlaying.text = [NSString stringWithFormat:@"%@",source];
+                    NSLog(@"%@",source);
                 }
             }
         }
@@ -82,12 +79,10 @@
 
 - (void)showPauseButton
 {
-    
 }
 
 - (void)showPlayButton
 {
-    
 }
 
 - (void)playPause
@@ -119,7 +114,7 @@
 - (IBAction)pause:(id)sender
 {
     [player pause];
-    [self showPlayButton];
+    //[self showPlayButton];
 }
 
 @end
