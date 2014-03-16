@@ -118,7 +118,8 @@
 
 - (IBAction)infoButtonPress:(id)sender
 {
-    
+    [Notification showMessage:@"Приложение разработанно\n в ходе практики\nстудентом группы АУ-111\nРодштейном Алексеем"];
+
 }
 
 - (IBAction)play:(id)sender

@@ -31,6 +31,7 @@
 		457908F418D3473A00292173 /* logo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 457908F318D3473A00292173 /* logo_1.png */; };
 		457908F718D3481900292173 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457908F618D3481900292173 /* MainViewController.m */; };
 		457908F918D396F600292173 /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 457908F818D396F500292173 /* icon-120.png */; };
+		45E414AA18D5D02900F48EC1 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E414A918D5D02900F48EC1 /* Notification.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,8 @@
 		457908F518D3481900292173 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		457908F618D3481900292173 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		457908F818D396F500292173 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
+		45E414A818D5D02900F48EC1 /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		45E414A918D5D02900F48EC1 /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +147,8 @@
 				45237B3718C9CCBC00A20A61 /* Main.storyboard */,
 				45237B3A18C9CCBC00A20A61 /* ViewController.h */,
 				45237B3B18C9CCBC00A20A61 /* ViewController.m */,
+				45E414A818D5D02900F48EC1 /* Notification.h */,
+				45E414A918D5D02900F48EC1 /* Notification.m */,
 				457908F518D3481900292173 /* MainViewController.h */,
 				457908F618D3481900292173 /* MainViewController.m */,
 				45237B3D18C9CCBC00A20A61 /* Images.xcassets */,
@@ -244,6 +249,11 @@
 				TargetAttributes = {
 					45237B2118C9CCBC00A20A61 = {
 						DevelopmentTeam = 7DP758TK3A;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
 					};
 					45237B4218C9CCBC00A20A61 = {
 						TestTargetID = 45237B2118C9CCBC00A20A61;
@@ -303,6 +313,7 @@
 			files = (
 				45237B3C18C9CCBC00A20A61 /* ViewController.m in Sources */,
 				45237B3618C9CCBC00A20A61 /* AppDelegate.m in Sources */,
+				45E414AA18D5D02900F48EC1 /* Notification.m in Sources */,
 				45237B3218C9CCBC00A20A61 /* main.m in Sources */,
 				457908F718D3481900292173 /* MainViewController.m in Sources */,
 			);
@@ -430,10 +441,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hardstep radio/Hardstep radio-Prefix.pch";
 				INFOPLIST_FILE = "Hardstep radio/Hardstep radio-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -444,10 +457,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hardstep radio/Hardstep radio-Prefix.pch";
 				INFOPLIST_FILE = "Hardstep radio/Hardstep radio-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
