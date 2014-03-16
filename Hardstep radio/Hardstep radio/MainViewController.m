@@ -25,6 +25,14 @@
     NSString *stringURL = @"http://89.221.207.241:8888/";
     NSURL *streamURL = [NSURL URLWithString:stringURL];
     
+    //настройка play/pause
+    [playButton setTitle:@"" forState:UIControlStateNormal];
+    [playButton setImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
+    [pauseButton setTitle:@"" forState:UIControlStateNormal];
+    [pauseButton setImage:[UIImage imageNamed:@"Button_play_active.png"] forState:UIControlStateNormal];
+    
+    pauseButton.hidden = YES;
+
     
     //Настройки класса плеера
     asset = [AVURLAsset URLAssetWithURL:streamURL options:nil];
@@ -35,9 +43,6 @@
     [playerItem addObserver:self forKeyPath:@"timedMetadata" options:NSKeyValueObservingOptionNew context:nil];
     [player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     
-    
-    [self playPause];
-    
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
@@ -45,8 +50,10 @@
 
 #pragma mark Funktions
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
-                        change:(NSDictionary *)change context:(void *)context
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
 {
     if ([keyPath isEqualToString:@"status"])
     {
@@ -77,7 +84,6 @@
             }
         }
     }
-
 }
 
 - (BOOL)isPlaying
@@ -85,27 +91,9 @@
     return [player rate] != 0.f;
 }
 
-- (void)showPauseButton
-{
-}
-
-- (void)showPlayButton
-{
-}
-
 - (void)playPause
 {
-    
-}
 
-- (void)enablePlayerButtons
-{
-    
-}
-
-- (void)disablePlayerButtons
-{
-    
 }
 
 #pragma mark Actions
@@ -118,20 +106,21 @@
 
 - (IBAction)infoButtonPress:(id)sender
 {
-    [Notification showMessage:@"Приложение разработанно\n в ходе практики\nстудентом группы АУ-111\nРодштейном Алексеем"];
-
+    [Notification showMessage:@"ПОЗЖДНЕЕ ЗДЕСЬ ПОЯВИТСЯ ТЕКСТ"];
 }
 
 - (IBAction)play:(id)sender
 {
     [player play];
-    //[self showPauseButton];
+    playButton.hidden = YES;
+    pauseButton.hidden = NO;
 }
 
 - (IBAction)pause:(id)sender
 {
     [player pause];
-    //[self showPlayButton];
+    playButton.hidden = NO;
+    pauseButton.hidden = YES;
 }
 
 @end

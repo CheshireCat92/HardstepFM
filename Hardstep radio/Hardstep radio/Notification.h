@@ -17,7 +17,7 @@
 #define DEFAULT_STARTSCALE		0.8
 #define DEFAULT_MIDDLESCALE		1.1
 #define DEFAULT_ENDSCALE		1.2
-#define DEFAULT_FONTNAME		@"Helvetica-Bold"
+#define DEFAULT_FONTNAME		@"Helvetica-neon"
 #define DEFAULT_FONTSIZE		15.0f
 #define DEFAULT_TEXTCOLOR		whiteColor
 #define DEFAULT_TEXTALIGNMENT	UITextAlignmentCenter
