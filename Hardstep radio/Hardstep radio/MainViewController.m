@@ -27,7 +27,7 @@
     
     //настройка play/pause
     [playButton setTitle:@"" forState:UIControlStateNormal];
-    [playButton setImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
+    [playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
     [pauseButton setTitle:@"" forState:UIControlStateNormal];
     [pauseButton setImage:[UIImage imageNamed:@"Button_rec_active.png"] forState:UIControlStateNormal];
     

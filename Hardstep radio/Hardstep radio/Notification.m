@@ -48,6 +48,7 @@ static CGFloat			FHeScaleIO3;
     {
 		return;
 	}
+    
 	UILabel *messageLabel = [[UILabel alloc] init];
 	messageLabel.textAlignment = textAlignment;
 	messageLabel.numberOfLines = 0;
@@ -56,7 +57,8 @@ static CGFloat			FHeScaleIO3;
 	messageLabel.font = [UIFont fontWithName:DEFAULT_FONTNAME size:DEFAULT_FONTSIZE];
 	messageLabel.textColor = [UIColor DEFAULT_TEXTCOLOR];
 	messageLabel.backgroundColor = [UIColor clearColor];
-	//Message size and rect
+	
+    //Message size and rect
 	CGSize messageSize = [message sizeWithFont:messageLabel.font
 							 constrainedToSize:CGSizeMake(DEFAULT_MESSAGEWIDTH, 9999.0f)
 								 lineBreakMode:UILineBreakModeWordWrap];
@@ -68,35 +70,46 @@ static CGFloat			FHeScaleIO3;
 	messageSize.width += offsetSize.width*2.0f + borderWidth;
 	messageSize.height += offsetSize.height*2.0f + borderWidth;
 	messageRect = CGRectMake(0.0f, 0.0f, messageSize.width, messageSize.height);
-	//Message view
+	
+    //Message view
 	UIView *content = [[UIView alloc] init];
 	content.frame = messageRect;
-	if (backgroundColor != nil) {
+	if (backgroundColor != nil)
+    {
 		content.backgroundColor = backgroundColor;
-	} else {
+	}
+    else
+    {
 		content.backgroundColor = [UIColor colorWithRed:(60.0f/255.0f) green:(60.0f/255.0f) blue:(60.0f/255.0f) alpha:1.0f];
 	}
+    
 	content.alpha = 0.8f;
 	content.layer.cornerRadius = cornerRadius;
 	content.layer.shadowRadius = shadowRadius;
 	content.layer.masksToBounds = NO;
 	content.layer.shadowOffset = CGSizeMake(0.0f, shadowRadius/2.0f);
 	content.layer.shadowOpacity = 1.0f;
-	if (shadowColor != nil) {
+	if (shadowColor != nil)
+    {
 		content.layer.shadowColor = [shadowColor CGColor];
 	}
 	content.layer.borderWidth = borderWidth;
-	if (borderColor != nil) {
+	if (borderColor != nil)
+    {
 		content.layer.borderColor = [borderColor CGColor];
-	} else {
+	}
+    else
+    {
 		content.layer.borderColor = [[UIColor colorWithRed:(128.0f/255.0f) green:(128.0f/255.0f) blue:(128.0f/255.0f) alpha:1.0f] CGColor];
 	}
 	content.layer.shadowPath = [UIBezierPath bezierPathWithRect:messageRect].CGPath;
-	//Root view
+	
+    //Root view
 	UIView *rootView = [[UIView alloc] init];
 	rootView.tag = DEFAULT_VIEWTAG;
 	rootView.frame = messageRect;
-	//Compose views
+	
+    //Compose views
 	messageLabel.center = CGPointMake(messageSize.width/2.0f, messageSize.height/2.0f);
 	[content addSubview:messageLabel];
 	[rootView addSubview:content];
@@ -104,13 +117,16 @@ static CGFloat			FHeScaleIO3;
 	//Animation
 	rootView.alpha = 0.0f;
 	rootView.center = [[UIApplication sharedApplication] keyWindow].center;
-	if (sScale <= 0.0f) {
+	if (sScale <= 0.0f)
+    {
 		sScale = 0.01f;
 	}
-	if (mScale <= 0.0f) {
+	if (mScale <= 0.0f)
+    {
 		mScale = 0.01f;
 	}
-	if (eScale <= 0.0f) {
+	if (eScale <= 0.0f)
+    {
 		eScale = 0.01f;
 	}
 	
