@@ -13,7 +13,7 @@
 @end
 
 @implementation MainViewController
-@synthesize infoButton, playButton, pauseButton, nowPlaying, slides;
+@synthesize infoButton, playButton, pauseButton, nowPlaying, slides, source;
 
 #pragma mark LifeCycle
 
@@ -29,7 +29,7 @@
     [playButton setTitle:@"" forState:UIControlStateNormal];
     [playButton setImage:[UIImage imageNamed:@"Button.png"] forState:UIControlStateNormal];
     [pauseButton setTitle:@"" forState:UIControlStateNormal];
-    [pauseButton setImage:[UIImage imageNamed:@"Button_play_active.png"] forState:UIControlStateNormal];
+    [pauseButton setImage:[UIImage imageNamed:@"Button_rec_active.png"] forState:UIControlStateNormal];
     
     pauseButton.hidden = YES;
 
@@ -77,7 +77,7 @@
                     {
                         nowPlaying.hidden = NO;
                     }
-                    NSString *source = metaItem.stringValue;
+                    source = metaItem.stringValue;
                     nowPlaying.text = [NSString stringWithFormat:@"%@",source];
                     NSLog(@"%@",source);
                 }

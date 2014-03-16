@@ -11,14 +11,14 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "Notification.h"
 
-@class AVPlayer;
-@class AVPlayerItem;
-
 @interface MainViewController : UIViewController
 {
     AVAsset *asset;
     AVPlayerItem *playerItem;
     AVPlayer *player;
+    
+    //мета данные
+    NSString *source;
     
     IBOutlet UIButton *playButton;
     IBOutlet UIButton *pauseButton;
@@ -29,6 +29,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *pauseButton;
 @property (strong, nonatomic) IBOutlet UILabel *nowPlaying;
 @property (strong, nonatomic) IBOutlet UISlider *slides;
+
+@property NSString *source;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
