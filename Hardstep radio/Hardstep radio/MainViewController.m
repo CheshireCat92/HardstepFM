@@ -13,7 +13,7 @@
 @end
 
 @implementation MainViewController
-@synthesize infoButton, playButton, pauseButton, nowPlaying, slides, source;
+@synthesize playButton, pauseButton, source, rootVIew, mainLogo;
 @synthesize containerView;//вьюха - контейнер
 @synthesize openCloseModalTableView;//кнопка
 @synthesize trackTableView;//табличка
@@ -26,19 +26,35 @@
 {
     [super viewDidLoad];
     
+    //настройка фонового изображения и блюр эффекта
+    //Степень размытия изображения
+    //int boxsize = (int)(1.5 * 7);
+    //boxsize = boxsize - (boxsize % 2) + 1;
+    //Фоновое изображение
+    //UIImage *backgroung = [UIImage imageNamed:@"Background.png"];
+    //Применение функции размытия к нашему фону
+    //UIImage *blurUmage = [self boxblurImage:backgroung boxSize:boxsize];
+    //установка фонового размытого изображения
+    //rootVIew.backgroundColor = [UIColor colorWithPatternImage: blurUmage];
+    
     //Адрес потока
     NSString *stringURL = @"http://89.221.207.241:8888/";
     NSURL *streamURL = [NSURL URLWithString:stringURL];
     
-    //настройка play/pause
+    //настройка play/pause, логотипа и главного фона
+    UIImage *backgroung = [UIImage imageNamed:@"Background.png"];
+    rootVIew.backgroundColor = [UIColor colorWithPatternImage: backgroung];
+    rootVIew.contentMode = UIViewContentModeScaleAspectFit;
+    
+    [mainLogo setImage:[UIImage imageNamed:@"logo.png"]];
+
     [playButton setTitle:@"" forState:UIControlStateNormal];
     [playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
     [pauseButton setTitle:@"" forState:UIControlStateNormal];
-    [pauseButton setImage:[UIImage imageNamed:@"Button_rec_active.png"] forState:UIControlStateNormal];
+    [pauseButton setImage:[UIImage imageNamed:@"Stop.png"] forState:UIControlStateNormal];
     
     pauseButton.hidden = YES;
 
-    
     //Настройки класса плеера
     asset = [AVURLAsset URLAssetWithURL:streamURL options:nil];
     playerItem = [AVPlayerItem playerItemWithAsset:asset];
@@ -68,7 +84,7 @@
     [containerView bringSubviewToFront:openCloseModalTableView];
     
     nowPlayingLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, openCloseModalTableView.bounds.size.width, openCloseModalTableView.bounds.size.height)];
-    nowPlayingLabel.text = @"Text";
+    nowPlayingLabel.text = @"...";
     nowPlayingLabel.textColor = [UIColor orangeColor];
     [nowPlayingLabel setFont:[UIFont fontWithName:@"Danger" size:25.0f]];
     nowPlayingLabel.textAlignment = NSTextAlignmentCenter ;
@@ -111,12 +127,8 @@
                 NSArray *meta = [playerItem timedMetadata];
                 for (AVMetadataItem *metaItem in meta)
                 {
-                    if(nowPlaying.hidden == YES)
-                    {
-                        nowPlaying.hidden = NO;
-                    }
                     source = metaItem.stringValue;
-                    nowPlaying.text = [NSString stringWithFormat:@"%@",source];
+                    nowPlayingLabel.text = [NSString stringWithFormat:@"%@",source];
                     NSLog(@"%@",source);
                 }
             }
@@ -134,15 +146,71 @@
 
 }
 
-#pragma mark Actions
-
-- (IBAction)changeVolume:(id)sender
+//Метод для зазмытия изображения.
+-(UIImage *)boxblurImage:(UIImage *)image boxSize:(int)boxSize
 {
-    //Action для регулятора громкости, необходимо синхронизировать вместе с системным
-    [player setVolume:[slides value]];
+    CGImageRef img = image.CGImage;
+    
+    vImage_Buffer inBuffer, outBuffer;
+    
+    vImage_Error error;
+    
+    void *pixelBuffer;
+    
+    CGDataProviderRef inProvider = CGImageGetDataProvider(img);
+    CFDataRef inBitmapData = CGDataProviderCopyData(inProvider);
+    
+    inBuffer.width = CGImageGetWidth(img);
+    inBuffer.height = CGImageGetHeight(img);
+    inBuffer.rowBytes = CGImageGetBytesPerRow(img);
+    
+    inBuffer.data = (void*)CFDataGetBytePtr(inBitmapData);
+    
+    pixelBuffer = malloc(CGImageGetBytesPerRow(img) * CGImageGetHeight(img));
+    
+    if(pixelBuffer == NULL)
+        NSLog(@"No pixelbuffer");
+    
+    outBuffer.data = pixelBuffer;
+    outBuffer.width = CGImageGetWidth(img);
+    outBuffer.height = CGImageGetHeight(img);
+    outBuffer.rowBytes = CGImageGetBytesPerRow(img);
+    
+    error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, NULL, 0, 0, boxSize, boxSize, NULL, kvImageEdgeExtend);
+    
+    if (error)
+    {
+        NSLog(@"error from convolution %ld", error);
+    }
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextRef ctx = CGBitmapContextCreate(outBuffer.data,
+                                             outBuffer.width,
+                                             outBuffer.height,
+                                             8,
+                                             outBuffer.rowBytes,
+                                             colorSpace,
+                                             kCGImageAlphaNoneSkipLast);
+    
+    CGImageRef imageRef = CGBitmapContextCreateImage (ctx);
+    
+    
+    UIImage *returnImage = [UIImage imageWithCGImage:imageRef];
+    
+    CGContextRelease(ctx);
+    CGColorSpaceRelease(colorSpace);
+    
+    free(pixelBuffer);
+    CFRelease(inBitmapData);
+    
+    CGColorSpaceRelease(colorSpace);
+    CGImageRelease(imageRef);
+    
+    return returnImage;
 }
 
-
+#pragma mark Actions
 
 - (IBAction)play:(id)sender
 {

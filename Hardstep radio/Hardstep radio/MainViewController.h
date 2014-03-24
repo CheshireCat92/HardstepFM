@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-
+#import <Accelerate/Accelerate.h>
 
 @interface MainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
@@ -24,12 +24,10 @@
     IBOutlet UIButton *pauseButton;
 }
 
-@property (strong, nonatomic) IBOutlet UIButton *infoButton;
+@property (strong, nonatomic) IBOutlet UIImageView *mainLogo;
+@property (strong, nonatomic) IBOutlet UIView *rootVIew;
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
 @property (strong, nonatomic) IBOutlet UIButton *pauseButton;
-@property (strong, nonatomic) IBOutlet UILabel *nowPlaying;
-@property (strong, nonatomic) IBOutlet UISlider *slides;
-
 
 //модальник с табличкой
 @property (strong, nonatomic)UITableView *trackTableView;
@@ -47,10 +45,7 @@
 - (BOOL)isPlaying;
 - (void)playPause;
 
-- (IBAction)changeVolume:(id)sender;
-- (IBAction)infoButtonPress:(id)sender;
 - (IBAction)play:(id)sender;
 - (IBAction)pause:(id)sender;
-
 
 @end
