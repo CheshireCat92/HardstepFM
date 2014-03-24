@@ -17,7 +17,7 @@
 @synthesize containerView,rootVIew;//вьюха - контейнер, рут вью
 @synthesize openCloseModalTableView;//кнопка
 @synthesize trackTableView;//табличка
-@synthesize hideShowBoolVar;//булеановские переменные
+@synthesize showBoolVar;//булеановские переменные
 @synthesize nowPlayingLabel1,nowPlayingLabel2;//лейблы
 @synthesize mainLogo;//логотипы
 
@@ -27,16 +27,7 @@
 {
     [super viewDidLoad];
     
-    //настройка фонового изображения и блюр эффекта
-    //Степень размытия изображения
-    //int boxsize = (int)(1.5 * 7);
-    //boxsize = boxsize - (boxsize % 2) + 1;
-    //Фоновое изображение
-    //UIImage *backgroung = [UIImage imageNamed:@"Background.png"];
-    //Применение функции размытия к нашему фону
-    //UIImage *blurUmage = [self boxblurImage:backgroung boxSize:boxsize];
-    //установка фонового размытого изображения
-    //rootVIew.backgroundColor = [UIColor colorWithPatternImage: blurUmage];
+    
     
     //Адрес потока
     NSString *stringURL = @"http://89.221.207.241:8888/";
@@ -52,7 +43,7 @@
     [playButton setTitle:@"" forState:UIControlStateNormal];
     [playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
     [pauseButton setTitle:@"" forState:UIControlStateNormal];
-    [pauseButton setImage:[UIImage imageNamed:@"Stop.png"] forState:UIControlStateNormal];
+    [pauseButton setImage:[UIImage imageNamed:@"stop.png"] forState:UIControlStateNormal];
     
     pauseButton.hidden = YES;
 
@@ -71,8 +62,7 @@
     
     
     //настройка контейнера для тейбл-вьюхи
-    float heightIndent = 160.0f;
-    containerView = [[UIView alloc]initWithFrame:CGRectMake(0, heightIndent, self.view.bounds.size.width, self.view.bounds.size.height)];
+    containerView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.bounds.size.height-50,self.view.bounds.size.width, self.view.bounds.size.height)];
     containerView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:containerView];
     [self.view bringSubviewToFront:containerView];
@@ -89,6 +79,8 @@
     
     nowPlayingLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
     nowPlayingLabel1.text = @"";
+//    nowPlayingLabel1.numberOfLines = 0;
+//    [nowPlayingLabel1 sizeToFit];
     nowPlayingLabel1.textColor = [UIColor orangeColor];
     nowPlayingLabel1.backgroundColor = [UIColor clearColor];
     [nowPlayingLabel1 setFont:[UIFont fontWithName:@"Danger" size:25.0f]];
@@ -96,8 +88,10 @@
     [openCloseModalTableView addSubview:nowPlayingLabel1];
     [openCloseModalTableView bringSubviewToFront:nowPlayingLabel1];
     
-    nowPlayingLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(openCloseModalTableView.bounds.size.width+10, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
+    nowPlayingLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(openCloseModalTableView.bounds.size.width+1, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
     nowPlayingLabel2.text = @"";
+//    nowPlayingLabel2.numberOfLines = 0;
+//    [nowPlayingLabel2 sizeToFit];
     nowPlayingLabel2.textColor = [UIColor orangeColor];
     nowPlayingLabel2.backgroundColor = [UIColor clearColor];
     [nowPlayingLabel2 setFont:[UIFont fontWithName:@"Danger" size:25.0f]];
@@ -106,14 +100,25 @@
     [openCloseModalTableView bringSubviewToFront:nowPlayingLabel2];
     
     
+    
+    //настройка фонового изображения и блюр эффекта
+    //Степень размытия изображения
+    int boxsize = (int)(1.5 * 7);
+    boxsize = boxsize - (boxsize % 2) + 1;
+    //Фоновое изображение
+    UIImage *backgroungBlur = [UIImage imageNamed:@"Background.png"];
+    //Применение функции размытия к нашему фону
+    UIImage *blurUmage = [self boxblurImage:backgroungBlur boxSize:boxsize];
     trackTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 70, containerView.bounds.size.width, containerView.bounds.size.height) style:UITableViewStylePlain];
     //trackTableView.delegate = self;
     //trackTableView.dataSource = self;
     [trackTableView setBackgroundColor:[UIColor clearColor]];
+    //установка фонового размытого изображения
+    trackTableView.backgroundColor = [UIColor colorWithPatternImage: blurUmage];
     [containerView addSubview:trackTableView];
     [containerView bringSubviewToFront:trackTableView];
     
-    hideShowBoolVar = YES;
+    showBoolVar = NO;
 
 }
 
@@ -248,14 +253,14 @@
 
 -(void)hideShowModalView //выползающий с низу модальник
 {
-    if (hideShowBoolVar == YES)
+    if (showBoolVar == YES)
     {
         [UIView animateWithDuration:0.5f animations:^
          {
              self.containerView.frame = CGRectMake(0, self.view.bounds.size.height-50,self.view.bounds.size.width, self.view.bounds.size.height);
          }
          ];
-        hideShowBoolVar = NO;
+        showBoolVar = NO;
         
     }
     else
@@ -265,7 +270,7 @@
              self.containerView.frame = CGRectMake(0, 160,self.view.bounds.size.width, self.view.bounds.size.height);
          }
          ];
-        hideShowBoolVar = YES;
+        showBoolVar = YES;
         
         
     }
@@ -297,8 +302,8 @@
                          options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAutoreverse
                       animations:^
             {
-                [nowPlayingLabel1 setFrame:CGRectMake(0-nowPlayingLabel1.bounds.size.width+10, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
-                [nowPlayingLabel2 setFrame:CGRectMake(0, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
+                [nowPlayingLabel1 setFrame:CGRectMake(0-nowPlayingLabel1.bounds.size.width+10, -10, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
+                [nowPlayingLabel2 setFrame:CGRectMake(0, -10, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
             
             }
     completion:^(BOOL finished)

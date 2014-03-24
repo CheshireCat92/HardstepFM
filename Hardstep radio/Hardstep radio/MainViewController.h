@@ -38,7 +38,7 @@
 @property (strong, nonatomic)UIView *containerView;
 @property (strong, nonatomic)UILabel *nowPlayingLabel1;
 @property (strong, nonatomic)UILabel *nowPlayingLabel2;
-@property bool hideShowBoolVar;
+@property bool showBoolVar;
 
 @property NSString *source;
 
