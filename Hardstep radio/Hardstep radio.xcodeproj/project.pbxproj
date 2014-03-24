@@ -34,6 +34,8 @@
 		45E414BF18D63CCF00F48EC1 /* Button_rec_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 45E414BB18D63CCF00F48EC1 /* Button_rec_active.png */; };
 		45E414C018D63CCF00F48EC1 /* Button_rec_click.png in Resources */ = {isa = PBXBuildFile; fileRef = 45E414BC18D63CCF00F48EC1 /* Button_rec_click.png */; };
 		45E414C118D63CCF00F48EC1 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 45E414BD18D63CCF00F48EC1 /* Button.png */; };
+		FF6751E218E059F0009FDDF8 /* Danger.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF6751E118E059F0009FDDF8 /* Danger.otf */; };
+		FF6751E418E06664009FDDF8 /* ButtonModalTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6751E318E06664009FDDF8 /* ButtonModalTexture.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,9 @@
 		45E414BB18D63CCF00F48EC1 /* Button_rec_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_rec_active.png; sourceTree = "<group>"; };
 		45E414BC18D63CCF00F48EC1 /* Button_rec_click.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button_rec_click.png; sourceTree = "<group>"; };
 		45E414BD18D63CCF00F48EC1 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
+		FF6751E018E059A0009FDDF8 /* WELTU.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = WELTU.TTF; sourceTree = "<group>"; };
+		FF6751E118E059F0009FDDF8 /* Danger.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Danger.otf; sourceTree = "<group>"; };
+		FF6751E318E06664009FDDF8 /* ButtonModalTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonModalTexture.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +173,8 @@
 				45237B2D18C9CCBC00A20A61 /* Hardstep radio-Info.plist */,
 				45237B2E18C9CCBC00A20A61 /* InfoPlist.strings */,
 				45237B3118C9CCBC00A20A61 /* main.m */,
+				FF6751E118E059F0009FDDF8 /* Danger.otf */,
+				FF6751E018E059A0009FDDF8 /* WELTU.TTF */,
 				45237B3318C9CCBC00A20A61 /* Hardstep radio-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -194,6 +201,7 @@
 		455E656618CA8A3000721641 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FF6751E318E06664009FDDF8 /* ButtonModalTexture.png */,
 				45E414BA18D63CCF00F48EC1 /* Button_play_active.png */,
 				45E414BB18D63CCF00F48EC1 /* Button_rec_active.png */,
 				45E414BC18D63CCF00F48EC1 /* Button_rec_click.png */,
@@ -290,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6751E418E06664009FDDF8 /* ButtonModalTexture.png in Resources */,
 				45E414BF18D63CCF00F48EC1 /* Button_rec_active.png in Resources */,
 				45E414BE18D63CCF00F48EC1 /* Button_play_active.png in Resources */,
 				45237B3E18C9CCBC00A20A61 /* Images.xcassets in Resources */,
@@ -300,6 +309,7 @@
 				45E414C018D63CCF00F48EC1 /* Button_rec_click.png in Resources */,
 				4566A4AE18CA04EB002106B9 /* logo.png in Resources */,
 				45729BE818D662D900D9504E /* Play.png in Resources */,
+				FF6751E218E059F0009FDDF8 /* Danger.otf in Resources */,
 				457908F418D3473A00292173 /* logo_1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,6 +463,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hardstep radio/Hardstep radio-Prefix.pch";
 				INFOPLIST_FILE = "Hardstep radio/Hardstep radio-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -469,6 +480,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hardstep radio/Hardstep radio-Prefix.pch";
 				INFOPLIST_FILE = "Hardstep radio/Hardstep radio-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
