@@ -14,11 +14,12 @@
 
 @implementation MainViewController
 @synthesize  playButton, pauseButton, source;
-@synthesize containerView;//вьюха - контейнер
+@synthesize containerView,rootVIew;//вьюха - контейнер, рут вью
 @synthesize openCloseModalTableView;//кнопка
 @synthesize trackTableView;//табличка
 @synthesize hideShowBoolVar;//булеановские переменные
-@synthesize nowPlayingLabel;//лейблы
+@synthesize nowPlayingLabel1,nowPlayingLabel2;//лейблы
+@synthesize mainLogo;//логотипы
 
 #pragma mark LifeCycle
 
@@ -78,6 +79,7 @@
     
     openCloseModalTableView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, containerView.bounds.size.width, 70)];
     [openCloseModalTableView setImage:[UIImage imageNamed:@"ButtonModal.png"] forState:UIControlStateNormal];
+    openCloseModalTableView.backgroundColor = [UIColor clearColor];
     openCloseModalTableView.hidden = NO;
     [openCloseModalTableView addTarget:self action:@selector(hideShowModalView) forControlEvents:UIControlEventTouchUpInside];
     [containerView addSubview:openCloseModalTableView];
@@ -85,13 +87,23 @@
     
     
     
-    nowPlayingLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, openCloseModalTableView.bounds.size.width, openCloseModalTableView.bounds.size.height)];
-    nowPlayingLabel.text = @"";
-    nowPlayingLabel.textColor = [UIColor orangeColor];
-    [nowPlayingLabel setFont:[UIFont fontWithName:@"Danger" size:25.0f]];
-    nowPlayingLabel.textAlignment = NSTextAlignmentCenter;
-    [openCloseModalTableView addSubview:nowPlayingLabel];
-    [openCloseModalTableView bringSubviewToFront:nowPlayingLabel];
+    nowPlayingLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
+    nowPlayingLabel1.text = @"";
+    nowPlayingLabel1.textColor = [UIColor orangeColor];
+    nowPlayingLabel1.backgroundColor = [UIColor clearColor];
+    [nowPlayingLabel1 setFont:[UIFont fontWithName:@"Danger" size:25.0f]];
+    nowPlayingLabel1.textAlignment = NSTextAlignmentCenter;
+    [openCloseModalTableView addSubview:nowPlayingLabel1];
+    [openCloseModalTableView bringSubviewToFront:nowPlayingLabel1];
+    
+    nowPlayingLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(openCloseModalTableView.bounds.size.width+10, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
+    nowPlayingLabel2.text = @"";
+    nowPlayingLabel2.textColor = [UIColor orangeColor];
+    nowPlayingLabel2.backgroundColor = [UIColor clearColor];
+    [nowPlayingLabel2 setFont:[UIFont fontWithName:@"Danger" size:25.0f]];
+    nowPlayingLabel2.textAlignment = NSTextAlignmentCenter;
+    [openCloseModalTableView addSubview:nowPlayingLabel2];
+    [openCloseModalTableView bringSubviewToFront:nowPlayingLabel2];
     
     
     trackTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 70, containerView.bounds.size.width, containerView.bounds.size.height) style:UITableViewStylePlain];
@@ -131,7 +143,8 @@
                 for (AVMetadataItem *metaItem in meta)
                 {
                     source = metaItem.stringValue;
-                    nowPlayingLabel.text = [NSString stringWithFormat:@"%@",source];
+                    nowPlayingLabel1.text = [NSString stringWithFormat:@"%@",source];
+                    nowPlayingLabel2.text = [NSString stringWithFormat:@"%@",source];
                     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
                     //[trackTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                     [self textAnimationInLabel];
@@ -151,6 +164,70 @@
 - (void)playPause
 {
 
+}
+
+//Метод для зазмытия изображения.
+-(UIImage *)boxblurImage:(UIImage *)image boxSize:(int)boxSize
+{
+    CGImageRef img = image.CGImage;
+    
+    vImage_Buffer inBuffer, outBuffer;
+    
+    vImage_Error error;
+    
+    void *pixelBuffer;
+    
+    CGDataProviderRef inProvider = CGImageGetDataProvider(img);
+    CFDataRef inBitmapData = CGDataProviderCopyData(inProvider);
+    
+    inBuffer.width = CGImageGetWidth(img);
+    inBuffer.height = CGImageGetHeight(img);
+    inBuffer.rowBytes = CGImageGetBytesPerRow(img);
+    
+    inBuffer.data = (void*)CFDataGetBytePtr(inBitmapData);
+    
+    pixelBuffer = malloc(CGImageGetBytesPerRow(img) * CGImageGetHeight(img));
+    
+    if(pixelBuffer == NULL)
+        NSLog(@"No pixelbuffer");
+    
+    outBuffer.data = pixelBuffer;
+    outBuffer.width = CGImageGetWidth(img);
+    outBuffer.height = CGImageGetHeight(img);
+    outBuffer.rowBytes = CGImageGetBytesPerRow(img);
+    
+    error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, NULL, 0, 0, boxSize, boxSize, NULL, kvImageEdgeExtend);
+    
+    if (error)
+    {
+        NSLog(@"error from convolution %ld", error);
+    }
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextRef ctx = CGBitmapContextCreate(outBuffer.data,
+                                             outBuffer.width,
+                                             outBuffer.height,
+                                             8,
+                                             outBuffer.rowBytes,
+                                             colorSpace,
+                                             kCGImageAlphaNoneSkipLast);
+    
+    CGImageRef imageRef = CGBitmapContextCreateImage (ctx);
+    
+    
+    UIImage *returnImage = [UIImage imageWithCGImage:imageRef];
+    
+    CGContextRelease(ctx);
+    CGColorSpaceRelease(colorSpace);
+    
+    free(pixelBuffer);
+    CFRelease(inBitmapData);
+    
+    CGColorSpaceRelease(colorSpace);
+    CGImageRelease(imageRef);
+    
+    return returnImage;
 }
 
 #pragma mark Actions
@@ -215,12 +292,13 @@
 #pragma mark custom Functions
 -(void)textAnimationInLabel
 {
-        [UILabel animateWithDuration:10.5f
+        [UILabel animateWithDuration:15.5f
                            delay:0.5f
                          options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAutoreverse
                       animations:^
             {
-                [nowPlayingLabel setFrame:CGRectMake(0-nowPlayingLabel.bounds.size.width, 0, openCloseModalTableView.bounds.size.width, openCloseModalTableView.bounds.size.height)];
+                [nowPlayingLabel1 setFrame:CGRectMake(0-nowPlayingLabel1.bounds.size.width+10, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
+                [nowPlayingLabel2 setFrame:CGRectMake(0, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
             
             }
     completion:^(BOOL finished)

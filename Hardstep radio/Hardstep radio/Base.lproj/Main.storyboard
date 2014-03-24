@@ -37,12 +37,18 @@
                                     <action selector="pause:" destination="cxX-O2-4Fl" eventType="touchUpInside" id="YUA-ln-mVr"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XS3-eK-ceP">
+                                <rect key="frame" x="0.0" y="9" width="320" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="mainLogo" destination="XS3-eK-ceP" id="pAa-OI-haB"/>
                         <outlet property="pauseButton" destination="sJL-jB-LsE" id="r1Y-N4-rOe"/>
                         <outlet property="playButton" destination="KBc-zZ-IRW" id="10z-Qn-fJ4"/>
+                        <outlet property="rootVIew" destination="rfM-BM-X3L" id="Ajf-nh-mYC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K1p-Zo-APy" userLabel="First Responder" sceneMemberID="firstResponder"/>

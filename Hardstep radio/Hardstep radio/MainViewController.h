@@ -25,6 +25,8 @@
 }
 
 
+@property (strong, nonatomic) IBOutlet UIImageView *mainLogo;
+@property (strong, nonatomic) IBOutlet UIView *rootVIew;
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
 @property (strong, nonatomic) IBOutlet UIButton *pauseButton;
 
@@ -34,7 +36,8 @@
 @property (strong, nonatomic)UITableView *trackTableView;
 @property (strong, nonatomic)UIButton *openCloseModalTableView;
 @property (strong, nonatomic)UIView *containerView;
-@property (strong, nonatomic)UILabel *nowPlayingLabel;
+@property (strong, nonatomic)UILabel *nowPlayingLabel1;
+@property (strong, nonatomic)UILabel *nowPlayingLabel2;
 @property bool hideShowBoolVar;
 
 @property NSString *source;
