@@ -24,11 +24,10 @@
     IBOutlet UIButton *pauseButton;
 }
 
-@property (strong, nonatomic) IBOutlet UIButton *infoButton;
+
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
 @property (strong, nonatomic) IBOutlet UIButton *pauseButton;
-@property (strong, nonatomic) IBOutlet UILabel *nowPlaying;
-@property (strong, nonatomic) IBOutlet UISlider *slides;
+
 
 
 //модальник с табличкой
@@ -47,8 +46,6 @@
 - (BOOL)isPlaying;
 - (void)playPause;
 
-- (IBAction)changeVolume:(id)sender;
-- (IBAction)infoButtonPress:(id)sender;
 - (IBAction)play:(id)sender;
 - (IBAction)pause:(id)sender;
 

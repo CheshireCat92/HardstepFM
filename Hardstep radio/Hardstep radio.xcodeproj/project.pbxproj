@@ -27,6 +27,8 @@
 		45729BE818D662D900D9504E /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 45729BE718D662D900D9504E /* Play.png */; };
 		457908F718D3481900292173 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457908F618D3481900292173 /* MainViewController.m */; };
 		457908F918D396F600292173 /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 457908F818D396F500292173 /* icon-120.png */; };
+		FF4B8A2218E06AC6009467C2 /* ButtonModal.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4B8A2118E06AC6009467C2 /* ButtonModal.png */; };
+		FF4B8A2618E06BEB009467C2 /* Danger.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF4B8A2518E06BEB009467C2 /* Danger.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		457908F518D3481900292173 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		457908F618D3481900292173 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		457908F818D396F500292173 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
+		FF4B8A2118E06AC6009467C2 /* ButtonModal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonModal.png; sourceTree = "<group>"; };
+		FF4B8A2518E06BEB009467C2 /* Danger.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Danger.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,7 @@
 				455E656618CA8A3000721641 /* Images */,
 				45237B2D18C9CCBC00A20A61 /* Hardstep radio-Info.plist */,
 				45237B2E18C9CCBC00A20A61 /* InfoPlist.strings */,
+				FF4B8A2518E06BEB009467C2 /* Danger.otf */,
 				45237B3118C9CCBC00A20A61 /* main.m */,
 				45237B3318C9CCBC00A20A61 /* Hardstep radio-Prefix.pch */,
 			);
@@ -174,6 +179,7 @@
 		455E656618CA8A3000721641 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FF4B8A2118E06AC6009467C2 /* ButtonModal.png */,
 				45729BE718D662D900D9504E /* Play.png */,
 				457908F818D396F500292173 /* icon-120.png */,
 				4566A4AD18CA04EB002106B9 /* logo.png */,
@@ -267,10 +273,12 @@
 			files = (
 				45237B3E18C9CCBC00A20A61 /* Images.xcassets in Resources */,
 				45237B3018C9CCBC00A20A61 /* InfoPlist.strings in Resources */,
+				FF4B8A2618E06BEB009467C2 /* Danger.otf in Resources */,
 				457908F918D396F600292173 /* icon-120.png in Resources */,
 				45237B3918C9CCBC00A20A61 /* Main.storyboard in Resources */,
 				4566A4AE18CA04EB002106B9 /* logo.png in Resources */,
 				45729BE818D662D900D9504E /* Play.png in Resources */,
+				FF4B8A2218E06AC6009467C2 /* ButtonModal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +429,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hardstep radio/Hardstep radio-Prefix.pch";
 				INFOPLIST_FILE = "Hardstep radio/Hardstep radio-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -437,6 +446,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hardstep radio/Hardstep radio-Prefix.pch";
 				INFOPLIST_FILE = "Hardstep radio/Hardstep radio-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

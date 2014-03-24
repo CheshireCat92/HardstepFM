@@ -13,7 +13,7 @@
 @end
 
 @implementation MainViewController
-@synthesize infoButton, playButton, pauseButton, nowPlaying, slides, source;
+@synthesize  playButton, pauseButton, source;
 @synthesize containerView;//вьюха - контейнер
 @synthesize openCloseModalTableView;//кнопка
 @synthesize trackTableView;//табличка
@@ -61,19 +61,22 @@
     [self.view bringSubviewToFront:containerView];
     
     openCloseModalTableView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, containerView.bounds.size.width, 70)];
-    [openCloseModalTableView setImage:[UIImage imageNamed:@"ButtonModalTexture.png"] forState:UIControlStateNormal];
+    [openCloseModalTableView setImage:[UIImage imageNamed:@"ButtonModal.png"] forState:UIControlStateNormal];
     openCloseModalTableView.hidden = NO;
     [openCloseModalTableView addTarget:self action:@selector(hideShowModalView) forControlEvents:UIControlEventTouchUpInside];
     [containerView addSubview:openCloseModalTableView];
     [containerView bringSubviewToFront:openCloseModalTableView];
     
+    
+    
     nowPlayingLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, openCloseModalTableView.bounds.size.width, openCloseModalTableView.bounds.size.height)];
-    nowPlayingLabel.text = @"Text";
+    nowPlayingLabel.text = @"";
     nowPlayingLabel.textColor = [UIColor orangeColor];
     [nowPlayingLabel setFont:[UIFont fontWithName:@"Danger" size:25.0f]];
-    nowPlayingLabel.textAlignment = NSTextAlignmentCenter ;
+    nowPlayingLabel.textAlignment = NSTextAlignmentCenter;
     [openCloseModalTableView addSubview:nowPlayingLabel];
     [openCloseModalTableView bringSubviewToFront:nowPlayingLabel];
+    
     
     trackTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 70, containerView.bounds.size.width, containerView.bounds.size.height) style:UITableViewStylePlain];
     //trackTableView.delegate = self;
@@ -86,7 +89,7 @@
 
 }
 
-#pragma mark Funktions
+#pragma mark Functions
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
@@ -111,12 +114,12 @@
                 NSArray *meta = [playerItem timedMetadata];
                 for (AVMetadataItem *metaItem in meta)
                 {
-                    if(nowPlaying.hidden == YES)
-                    {
-                        nowPlaying.hidden = NO;
-                    }
                     source = metaItem.stringValue;
-                    nowPlaying.text = [NSString stringWithFormat:@"%@",source];
+                    nowPlayingLabel.text = [NSString stringWithFormat:@"%@",source];
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                    //[trackTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self textAnimationInLabel];
+                   
                     NSLog(@"%@",source);
                 }
             }
@@ -135,14 +138,6 @@
 }
 
 #pragma mark Actions
-
-- (IBAction)changeVolume:(id)sender
-{
-    //Action для регулятора громкости, необходимо синхронизировать вместе с системным
-    [player setVolume:[slides value]];
-}
-
-
 
 - (IBAction)play:(id)sender
 {
@@ -201,6 +196,22 @@
     return newCell;
 }
 
+#pragma mark custom Functions
+-(void)textAnimationInLabel
+{
+        [UILabel animateWithDuration:10.5f
+                           delay:0.5f
+                         options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAutoreverse
+                      animations:^
+            {
+                [nowPlayingLabel setFrame:CGRectMake(0-nowPlayingLabel.bounds.size.width, 0, openCloseModalTableView.bounds.size.width, openCloseModalTableView.bounds.size.height)];
+            
+            }
+    completion:^(BOOL finished)
+    {
+    }];
+
+}
 @end
 
 
