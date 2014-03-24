@@ -14,6 +14,11 @@
 
 @implementation MainViewController
 @synthesize infoButton, playButton, pauseButton, nowPlaying, slides, source;
+@synthesize containerView;//вьюха - контейнер
+@synthesize openCloseModalTableView;//кнопка
+@synthesize trackTableView;//табличка
+@synthesize hideShowBoolVar;//булеановские переменные
+@synthesize nowPlayingLabel;//лейблы
 
 #pragma mark LifeCycle
 
@@ -46,6 +51,39 @@
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    
+    //настройка контейнера для тейбл-вьюхи
+    float heightIndent = 160.0f;
+    containerView = [[UIView alloc]initWithFrame:CGRectMake(0, heightIndent, self.view.bounds.size.width, self.view.bounds.size.height)];
+    containerView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:containerView];
+    [self.view bringSubviewToFront:containerView];
+    
+    openCloseModalTableView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, containerView.bounds.size.width, 70)];
+    [openCloseModalTableView setImage:[UIImage imageNamed:@"ButtonModalTexture.png"] forState:UIControlStateNormal];
+    openCloseModalTableView.hidden = NO;
+    [openCloseModalTableView addTarget:self action:@selector(hideShowModalView) forControlEvents:UIControlEventTouchUpInside];
+    [containerView addSubview:openCloseModalTableView];
+    [containerView bringSubviewToFront:openCloseModalTableView];
+    
+    nowPlayingLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, openCloseModalTableView.bounds.size.width, openCloseModalTableView.bounds.size.height)];
+    nowPlayingLabel.text = @"Text";
+    nowPlayingLabel.textColor = [UIColor orangeColor];
+    [nowPlayingLabel setFont:[UIFont fontWithName:@"Danger" size:25.0f]];
+    nowPlayingLabel.textAlignment = NSTextAlignmentCenter ;
+    [openCloseModalTableView addSubview:nowPlayingLabel];
+    [openCloseModalTableView bringSubviewToFront:nowPlayingLabel];
+    
+    trackTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 70, containerView.bounds.size.width, containerView.bounds.size.height) style:UITableViewStylePlain];
+    //trackTableView.delegate = self;
+    //trackTableView.dataSource = self;
+    [trackTableView setBackgroundColor:[UIColor clearColor]];
+    [containerView addSubview:trackTableView];
+    [containerView bringSubviewToFront:trackTableView];
+    
+    hideShowBoolVar = YES;
+
 }
 
 #pragma mark Funktions
@@ -104,10 +142,7 @@
     [player setVolume:[slides value]];
 }
 
-- (IBAction)infoButtonPress:(id)sender
-{
-    [Notification showMessage:@"ПОЗЖДНЕЕ ЗДЕСЬ ПОЯВИТСЯ ТЕКСТ"];
-}
+
 
 - (IBAction)play:(id)sender
 {
@@ -123,4 +158,49 @@
     pauseButton.hidden = YES;
 }
 
+-(void)hideShowModalView //выползающий с низу модальник
+{
+    if (hideShowBoolVar == YES)
+    {
+        [UIView animateWithDuration:0.5f animations:^
+         {
+             self.containerView.frame = CGRectMake(0, self.view.bounds.size.height-50,self.view.bounds.size.width, self.view.bounds.size.height);
+         }
+         ];
+        hideShowBoolVar = NO;
+        
+    }
+    else
+    {
+        [UIView animateWithDuration:0.5f animations:^
+         {
+             self.containerView.frame = CGRectMake(0, 160,self.view.bounds.size.width, self.view.bounds.size.height);
+         }
+         ];
+        hideShowBoolVar = YES;
+        
+        
+    }
+}
+
+#pragma mark - TableView functions and Methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *newCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"newCell"];
+    return newCell;
+}
+
 @end
+
+

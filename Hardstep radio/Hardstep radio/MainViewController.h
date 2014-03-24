@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "Notification.h"
 
-@interface MainViewController : UIViewController
+
+@interface MainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     AVAsset *asset;
     AVPlayerItem *playerItem;
@@ -29,6 +29,14 @@
 @property (strong, nonatomic) IBOutlet UIButton *pauseButton;
 @property (strong, nonatomic) IBOutlet UILabel *nowPlaying;
 @property (strong, nonatomic) IBOutlet UISlider *slides;
+
+
+//модальник с табличкой
+@property (strong, nonatomic)UITableView *trackTableView;
+@property (strong, nonatomic)UIButton *openCloseModalTableView;
+@property (strong, nonatomic)UIView *containerView;
+@property (strong, nonatomic)UILabel *nowPlayingLabel;
+@property bool hideShowBoolVar;
 
 @property NSString *source;
 
