@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-
+#import <Accelerate/Accelerate.h>
 
 @interface MainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
@@ -48,6 +48,5 @@
 
 - (IBAction)play:(id)sender;
 - (IBAction)pause:(id)sender;
-
 
 @end

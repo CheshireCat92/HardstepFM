@@ -23,8 +23,10 @@
 		45237B4718C9CCBC00A20A61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45237B2918C9CCBC00A20A61 /* UIKit.framework */; };
 		45237B4F18C9CCBC00A20A61 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45237B4D18C9CCBC00A20A61 /* InfoPlist.strings */; };
 		45237B5118C9CCBC00A20A61 /* Hardstep_radioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45237B5018C9CCBC00A20A61 /* Hardstep_radioTests.m */; };
-		4566A4AE18CA04EB002106B9 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4566A4AD18CA04EB002106B9 /* logo.png */; };
-		45729BE818D662D900D9504E /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 45729BE718D662D900D9504E /* Play.png */; };
+		454D29C818E07AEF002FC946 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 454D29C518E07AEF002FC946 /* logo.png */; };
+		454D29CA18E07AEF002FC946 /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 454D29C718E07AEF002FC946 /* Play.png */; };
+		454D29CC18E07C4D002FC946 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 454D29CB18E07C4D002FC946 /* Background.png */; };
+		454D29CE18E08340002FC946 /* Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 454D29CD18E08340002FC946 /* Stop.png */; };
 		457908F718D3481900292173 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457908F618D3481900292173 /* MainViewController.m */; };
 		457908F918D396F600292173 /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 457908F818D396F500292173 /* icon-120.png */; };
 		FF4B8A2218E06AC6009467C2 /* ButtonModal.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4B8A2118E06AC6009467C2 /* ButtonModal.png */; };
@@ -62,8 +64,10 @@
 		45237B4C18C9CCBC00A20A61 /* Hardstep radioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hardstep radioTests-Info.plist"; sourceTree = "<group>"; };
 		45237B4E18C9CCBC00A20A61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		45237B5018C9CCBC00A20A61 /* Hardstep_radioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hardstep_radioTests.m; sourceTree = "<group>"; };
-		4566A4AD18CA04EB002106B9 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		45729BE718D662D900D9504E /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
+		454D29C518E07AEF002FC946 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		454D29C718E07AEF002FC946 /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
+		454D29CB18E07C4D002FC946 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
+		454D29CD18E08340002FC946 /* Stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop.png; sourceTree = "<group>"; };
 		457908F518D3481900292173 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		457908F618D3481900292173 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		457908F818D396F500292173 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
@@ -182,7 +186,6 @@
 				FF4B8A2118E06AC6009467C2 /* ButtonModal.png */,
 				45729BE718D662D900D9504E /* Play.png */,
 				457908F818D396F500292173 /* icon-120.png */,
-				4566A4AD18CA04EB002106B9 /* logo.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -272,6 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				45237B3E18C9CCBC00A20A61 /* Images.xcassets in Resources */,
+				454D29CE18E08340002FC946 /* Stop.png in Resources */,
+				454D29CC18E07C4D002FC946 /* Background.png in Resources */,
+				454D29C818E07AEF002FC946 /* logo.png in Resources */,
 				45237B3018C9CCBC00A20A61 /* InfoPlist.strings in Resources */,
 				FF4B8A2618E06BEB009467C2 /* Danger.otf in Resources */,
 				457908F918D396F600292173 /* icon-120.png in Resources */,

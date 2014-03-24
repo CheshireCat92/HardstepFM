@@ -26,19 +26,35 @@
 {
     [super viewDidLoad];
     
+    //настройка фонового изображения и блюр эффекта
+    //Степень размытия изображения
+    //int boxsize = (int)(1.5 * 7);
+    //boxsize = boxsize - (boxsize % 2) + 1;
+    //Фоновое изображение
+    //UIImage *backgroung = [UIImage imageNamed:@"Background.png"];
+    //Применение функции размытия к нашему фону
+    //UIImage *blurUmage = [self boxblurImage:backgroung boxSize:boxsize];
+    //установка фонового размытого изображения
+    //rootVIew.backgroundColor = [UIColor colorWithPatternImage: blurUmage];
+    
     //Адрес потока
     NSString *stringURL = @"http://89.221.207.241:8888/";
     NSURL *streamURL = [NSURL URLWithString:stringURL];
     
-    //настройка play/pause
+    //настройка play/pause, логотипа и главного фона
+    UIImage *backgroung = [UIImage imageNamed:@"Background.png"];
+    rootVIew.backgroundColor = [UIColor colorWithPatternImage: backgroung];
+    rootVIew.contentMode = UIViewContentModeScaleAspectFit;
+    
+    [mainLogo setImage:[UIImage imageNamed:@"logo.png"]];
+
     [playButton setTitle:@"" forState:UIControlStateNormal];
     [playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
     [pauseButton setTitle:@"" forState:UIControlStateNormal];
-    [pauseButton setImage:[UIImage imageNamed:@"Button_rec_active.png"] forState:UIControlStateNormal];
+    [pauseButton setImage:[UIImage imageNamed:@"Stop.png"] forState:UIControlStateNormal];
     
     pauseButton.hidden = YES;
 
-    
     //Настройки класса плеера
     asset = [AVURLAsset URLAssetWithURL:streamURL options:nil];
     playerItem = [AVPlayerItem playerItemWithAsset:asset];
