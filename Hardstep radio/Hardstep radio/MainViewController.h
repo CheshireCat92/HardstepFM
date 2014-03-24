@@ -9,32 +9,40 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-
-@class AVPlayer;
-@class AVPlayerItem;
+#import "Notification.h"
 
 @interface MainViewController : UIViewController
 {
     AVAsset *asset;
     AVPlayerItem *playerItem;
     AVPlayer *player;
+    
+    //мета данные
+    NSString *source;
+    
+    IBOutlet UIButton *playButton;
+    IBOutlet UIButton *pauseButton;
 }
+
 @property (strong, nonatomic) IBOutlet UIButton *infoButton;
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
 @property (strong, nonatomic) IBOutlet UIButton *pauseButton;
 @property (strong, nonatomic) IBOutlet UILabel *nowPlaying;
+@property (strong, nonatomic) IBOutlet UISlider *slides;
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
-                        change:(NSDictionary *)change context:(void *)context;
+@property NSString *source;
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context;
 - (BOOL)isPlaying;
-- (void)showPauseButton;
-- (void)showPlayButton;
 - (void)playPause;
-- (void)enablePlayerButtons;
-- (void)disablePlayerButtons;
 
+- (IBAction)changeVolume:(id)sender;
 - (IBAction)infoButtonPress:(id)sender;
 - (IBAction)play:(id)sender;
 - (IBAction)pause:(id)sender;
+
 
 @end

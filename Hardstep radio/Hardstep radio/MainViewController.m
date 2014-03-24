@@ -13,15 +13,28 @@
 @end
 
 @implementation MainViewController
-@synthesize infoButton, playButton, pauseButton, nowPlaying;
+@synthesize infoButton, playButton, pauseButton, nowPlaying, slides, source;
+
+#pragma mark LifeCycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    //Адрес потока
     NSString *stringURL = @"http://89.221.207.241:8888/";
     NSURL *streamURL = [NSURL URLWithString:stringURL];
     
+    //настройка play/pause
+    [playButton setTitle:@"" forState:UIControlStateNormal];
+    [playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
+    [pauseButton setTitle:@"" forState:UIControlStateNormal];
+    [pauseButton setImage:[UIImage imageNamed:@"Button_rec_active.png"] forState:UIControlStateNormal];
+    
+    pauseButton.hidden = YES;
+
+    
+    //Настройки класса плеера
     asset = [AVURLAsset URLAssetWithURL:streamURL options:nil];
     playerItem = [AVPlayerItem playerItemWithAsset:asset];
     player = [AVPlayer playerWithPlayerItem:playerItem];
@@ -30,16 +43,17 @@
     [playerItem addObserver:self forKeyPath:@"timedMetadata" options:NSKeyValueObservingOptionNew context:nil];
     [player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     
-    [self playPause];
-    
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
 
+#pragma mark Funktions
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
-                        change:(NSDictionary *)change context:(void *)context
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
 {
     if ([keyPath isEqualToString:@"status"])
     {
@@ -51,28 +65,25 @@
     }
     if ([keyPath isEqualToString:@"timedMetadata"] && [self isPlaying])
     {
-        for (AVAssetTrack *track in player.currentItem.tracks)
+        for (AVPlayerItemTrack *item in player.currentItem.tracks)
         {
-            NSLog(@"%@",track);
-            for (AVPlayerItemTrack *item in player.currentItem.tracks)
+            if ([item.assetTrack.mediaType isEqual:AVMediaTypeAudio])
             {
-                if ([item.assetTrack.mediaType isEqual:AVMediaTypeAudio])
+                //Обработка мета данных
+                NSArray *meta = [playerItem timedMetadata];
+                for (AVMetadataItem *metaItem in meta)
                 {
-                    NSArray *meta = [playerItem timedMetadata];
-                    for (AVMetadataItem *metaItem in meta)
+                    if(nowPlaying.hidden == YES)
                     {
-                        if(nowPlaying.hidden == YES)
-                        {
-                            nowPlaying.hidden = NO;
-                        }
-                        NSString *source = metaItem.stringValue;
-                        nowPlaying.text = [NSString stringWithFormat:@"%@",source];
+                        nowPlaying.hidden = NO;
                     }
+                    source = metaItem.stringValue;
+                    nowPlaying.text = [NSString stringWithFormat:@"%@",source];
+                    NSLog(@"%@",source);
                 }
             }
         }
     }
-
 }
 
 - (BOOL)isPlaying
@@ -80,46 +91,36 @@
     return [player rate] != 0.f;
 }
 
-- (void)showPauseButton
-{
-    
-}
-
-- (void)showPlayButton
-{
-    
-}
-
 - (void)playPause
 {
-    
+
 }
 
-- (void)enablePlayerButtons
-{
-    
-}
+#pragma mark Actions
 
-- (void)disablePlayerButtons
+- (IBAction)changeVolume:(id)sender
 {
-    
+    //Action для регулятора громкости, необходимо синхронизировать вместе с системным
+    [player setVolume:[slides value]];
 }
 
 - (IBAction)infoButtonPress:(id)sender
 {
-    
+    [Notification showMessage:@"ПОЗЖДНЕЕ ЗДЕСЬ ПОЯВИТСЯ ТЕКСТ"];
 }
 
 - (IBAction)play:(id)sender
 {
     [player play];
-    //[self showPauseButton];
+    playButton.hidden = YES;
+    pauseButton.hidden = NO;
 }
 
 - (IBAction)pause:(id)sender
 {
     [player pause];
-    [self showPlayButton];
+    playButton.hidden = NO;
+    pauseButton.hidden = YES;
 }
 
 @end
