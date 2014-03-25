@@ -302,8 +302,8 @@
                          options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAutoreverse
                       animations:^
             {
-                [nowPlayingLabel1 setFrame:CGRectMake(0-nowPlayingLabel1.bounds.size.width+10, -10, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
-                [nowPlayingLabel2 setFrame:CGRectMake(0, -10, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
+                [nowPlayingLabel1 setFrame:CGRectMake(0-nowPlayingLabel1.bounds.size.width+10, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
+                [nowPlayingLabel2 setFrame:CGRectMake(0, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
             
             }
     completion:^(BOOL finished)
