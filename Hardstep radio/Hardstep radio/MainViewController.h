@@ -24,13 +24,12 @@
     IBOutlet UIButton *pauseButton;
 }
 
-
+@property (strong, nonatomic) IBOutlet UIImageView *backLogo;
+@property (strong, nonatomic) IBOutlet UIImageView *fontLogo;
 @property (strong, nonatomic) IBOutlet UIImageView *mainLogo;
 @property (strong, nonatomic) IBOutlet UIView *rootVIew;
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
 @property (strong, nonatomic) IBOutlet UIButton *pauseButton;
-
-
 
 //модальник с табличкой
 @property (strong, nonatomic)UITableView *trackTableView;

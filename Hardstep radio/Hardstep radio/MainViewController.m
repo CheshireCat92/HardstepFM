@@ -19,7 +19,7 @@
 @synthesize trackTableView;//табличка
 @synthesize hideShowBoolVar;//булеановские переменные
 @synthesize nowPlayingLabel1,nowPlayingLabel2;//лейблы
-@synthesize mainLogo;//логотипы
+@synthesize mainLogo, fontLogo, backLogo;//логотипы
 
 #pragma mark LifeCycle
 
@@ -48,11 +48,13 @@
     rootVIew.contentMode = UIViewContentModeScaleAspectFit;
     
     [mainLogo setImage:[UIImage imageNamed:@"logo.png"]];
+    [fontLogo setImage:[UIImage imageNamed:@"logo_font.png"]];
+    [backLogo setImage:[UIImage imageNamed:@"logo_back.png"]];
 
     [playButton setTitle:@"" forState:UIControlStateNormal];
     [playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
     [pauseButton setTitle:@"" forState:UIControlStateNormal];
-    [pauseButton setImage:[UIImage imageNamed:@"Stop.png"] forState:UIControlStateNormal];
+    [pauseButton setImage:[UIImage imageNamed:@"ыtop.png"] forState:UIControlStateNormal];
     
     pauseButton.hidden = YES;
 
@@ -69,7 +71,6 @@
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
-    
     //настройка контейнера для тейбл-вьюхи
     float heightIndent = 160.0f;
     containerView = [[UIView alloc]initWithFrame:CGRectMake(0, heightIndent, self.view.bounds.size.width, self.view.bounds.size.height)];
@@ -84,8 +85,6 @@
     [openCloseModalTableView addTarget:self action:@selector(hideShowModalView) forControlEvents:UIControlEventTouchUpInside];
     [containerView addSubview:openCloseModalTableView];
     [containerView bringSubviewToFront:openCloseModalTableView];
-    
-    
     
     nowPlayingLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
     nowPlayingLabel1.text = @"";
@@ -114,7 +113,6 @@
     [containerView bringSubviewToFront:trackTableView];
     
     hideShowBoolVar = YES;
-
 }
 
 #pragma mark Functions
@@ -132,6 +130,7 @@
             [self playPause];
         }
     }
+    
     if ([keyPath isEqualToString:@"timedMetadata"] && [self isPlaying])
     {
         for (AVPlayerItemTrack *item in player.currentItem.tracks)
