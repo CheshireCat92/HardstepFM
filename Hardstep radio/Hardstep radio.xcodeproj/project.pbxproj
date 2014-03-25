@@ -22,6 +22,8 @@
 		45237B4718C9CCBC00A20A61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45237B2918C9CCBC00A20A61 /* UIKit.framework */; };
 		45237B4F18C9CCBC00A20A61 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45237B4D18C9CCBC00A20A61 /* InfoPlist.strings */; };
 		45237B5118C9CCBC00A20A61 /* Hardstep_radioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45237B5018C9CCBC00A20A61 /* Hardstep_radioTests.m */; };
+		455E918418E0A6C50079A994 /* logo_font.png in Resources */ = {isa = PBXBuildFile; fileRef = 455E918318E0A6C50079A994 /* logo_font.png */; };
+		455E918618E0A7F00079A994 /* logo_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 455E918518E0A7F00079A994 /* logo_back.png */; };
 		457908F718D3481900292173 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457908F618D3481900292173 /* MainViewController.m */; };
 		457908F918D396F600292173 /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 457908F818D396F500292173 /* icon-120.png */; };
 		FF4B8A2218E06AC6009467C2 /* ButtonModal.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4B8A2118E06AC6009467C2 /* ButtonModal.png */; };
@@ -64,6 +66,8 @@
 		45237B4C18C9CCBC00A20A61 /* Hardstep radioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hardstep radioTests-Info.plist"; sourceTree = "<group>"; };
 		45237B4E18C9CCBC00A20A61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		45237B5018C9CCBC00A20A61 /* Hardstep_radioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hardstep_radioTests.m; sourceTree = "<group>"; };
+		455E918318E0A6C50079A994 /* logo_font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_font.png; sourceTree = "<group>"; };
+		455E918518E0A7F00079A994 /* logo_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_back.png; sourceTree = "<group>"; };
 		457908F518D3481900292173 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		457908F618D3481900292173 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		457908F818D396F500292173 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
@@ -184,9 +188,11 @@
 			isa = PBXGroup;
 			children = (
 				FF4B8A2718E0889E009467C2 /* Background.png */,
+				455E918518E0A7F00079A994 /* logo_back.png */,
 				FF4B8A2818E0889E009467C2 /* logo.png */,
 				FF4B8A2918E0889E009467C2 /* Play.png */,
 				FF4B8A2A18E0889E009467C2 /* stop.png */,
+				455E918318E0A6C50079A994 /* logo_font.png */,
 				FF4B8A2118E06AC6009467C2 /* ButtonModal.png */,
 				457908F818D396F500292173 /* icon-120.png */,
 			);
@@ -282,7 +288,9 @@
 				FF4B8A2C18E0889E009467C2 /* logo.png in Resources */,
 				45237B3018C9CCBC00A20A61 /* InfoPlist.strings in Resources */,
 				FF4B8A2618E06BEB009467C2 /* Danger.otf in Resources */,
+				455E918618E0A7F00079A994 /* logo_back.png in Resources */,
 				457908F918D396F600292173 /* icon-120.png in Resources */,
+				455E918418E0A6C50079A994 /* logo_font.png in Resources */,
 				FF4B8A2B18E0889E009467C2 /* Background.png in Resources */,
 				FF4B8A2D18E0889E009467C2 /* Play.png in Resources */,
 				FF4B8A2E18E0889E009467C2 /* stop.png in Resources */,

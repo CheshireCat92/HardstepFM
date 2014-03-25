@@ -14,9 +14,17 @@
                         <viewControllerLayoutGuide type="bottom" id="m9G-rb-GQu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rfM-BM-X3L">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4qG-XK-6un">
+                                <rect key="frame" x="4" y="324" width="312" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qd4-Zd-5XU">
+                                <rect key="frame" x="4" y="9" width="312" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBc-zZ-IRW">
                                 <rect key="frame" x="36" y="198" width="250" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -38,13 +46,15 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XS3-eK-ceP">
-                                <rect key="frame" x="0.0" y="9" width="320" height="130"/>
+                                <rect key="frame" x="0.0" y="89" width="320" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="backLogo" destination="Qd4-Zd-5XU" id="XWS-SJ-Bna"/>
+                        <outlet property="fontLogo" destination="4qG-XK-6un" id="UB8-hh-oB8"/>
                         <outlet property="mainLogo" destination="XS3-eK-ceP" id="pAa-OI-haB"/>
                         <outlet property="pauseButton" destination="sJL-jB-LsE" id="r1Y-N4-rOe"/>
                         <outlet property="playButton" destination="KBc-zZ-IRW" id="10z-Qn-fJ4"/>
@@ -59,6 +69,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>
