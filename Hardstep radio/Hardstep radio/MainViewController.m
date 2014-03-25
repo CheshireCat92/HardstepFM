@@ -69,12 +69,13 @@
     [self.view bringSubviewToFront:containerView];
     
     openCloseModalTableView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, containerView.bounds.size.width, 70)];
-    [openCloseModalTableView setImage:[UIImage imageNamed:@"ButtonModal.png"] forState:UIControlStateNormal];
+    [openCloseModalTableView setImage:[UIImage imageNamed:@"trackDisplayVar2.png"] forState:UIControlStateNormal];
     openCloseModalTableView.backgroundColor = [UIColor clearColor];
     openCloseModalTableView.hidden = NO;
     [openCloseModalTableView addTarget:self action:@selector(hideShowModalView) forControlEvents:UIControlEventTouchUpInside];
     [containerView addSubview:openCloseModalTableView];
     [containerView bringSubviewToFront:openCloseModalTableView];
+    
     
     nowPlayingLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, openCloseModalTableView.bounds.size.width+10, openCloseModalTableView.bounds.size.height)];
     nowPlayingLabel1.text = @"";
@@ -98,6 +99,22 @@
     [openCloseModalTableView addSubview:nowPlayingLabel2];
     [openCloseModalTableView bringSubviewToFront:nowPlayingLabel2];
     
+    
+    
+    UIImageView *bottomBoarderTrackDisplay = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"trackBottomBoarder"]];
+    [bottomBoarderTrackDisplay setFrame:CGRectMake(-10, 10, openCloseModalTableView.bounds.size.width, openCloseModalTableView.bounds.size.height)];
+    [openCloseModalTableView addSubview: bottomBoarderTrackDisplay];
+    [openCloseModalTableView bringSubviewToFront:bottomBoarderTrackDisplay];
+    
+    UIImageView *leftBoarderTrackDisplay = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"SawBoarder"]];
+    [leftBoarderTrackDisplay setFrame:CGRectMake(-20, -16, 90, 90)];
+    [openCloseModalTableView addSubview: leftBoarderTrackDisplay];
+    [openCloseModalTableView bringSubviewToFront:leftBoarderTrackDisplay];
+    
+    UIImageView *rightBoarderTrackDisplay = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"SawBoarder"]];
+    [rightBoarderTrackDisplay setFrame:CGRectMake(250,-16, 90, 90)];
+    [openCloseModalTableView addSubview: rightBoarderTrackDisplay];
+    [openCloseModalTableView bringSubviewToFront:rightBoarderTrackDisplay];
     
     
     //настройка фонового изображения и блюр эффекта
