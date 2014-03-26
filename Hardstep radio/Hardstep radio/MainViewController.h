@@ -37,6 +37,7 @@
 @property (strong, nonatomic)UIView *containerView;
 @property (strong, nonatomic)UILabel *nowPlayingLabel1;
 @property (strong, nonatomic)UILabel *nowPlayingLabel2;
+@property (strong, nonatomic)NSMutableArray *songsDidPlayedMutableArray;
 @property bool showBoolVar;
 
 @property NSString *source;

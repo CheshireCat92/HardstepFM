@@ -20,6 +20,7 @@
 @synthesize showBoolVar;//булеановские переменные
 @synthesize nowPlayingLabel1,nowPlayingLabel2;//лейблы
 @synthesize mainLogo, fontLogo, backLogo;//логотипы
+@synthesize songsDidPlayedMutableArray;//массивы
 
 #pragma mark LifeCycle
 
@@ -27,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    
+    songsDidPlayedMutableArray = [NSMutableArray new];
     
     //Адрес потока
     NSString *stringURL = @"http://89.221.207.241:8888/";
@@ -63,8 +64,9 @@
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
     //настройка контейнера для тейбл-вьюхи
-    containerView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.bounds.size.height-50,self.view.bounds.size.width, self.view.bounds.size.height)];
+    containerView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.bounds.size.height-70,self.view.bounds.size.width, self.view.bounds.size.height)];
     containerView.backgroundColor = [UIColor clearColor];
+    containerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed: @"tableViewBackground.png"]];
     [self.view addSubview:containerView];
     [self.view bringSubviewToFront:containerView];
     
@@ -122,17 +124,24 @@
     int boxsize = (int)(1.5 * 7);
     boxsize = boxsize - (boxsize % 2) + 1;
     //Фоновое изображение
-    UIImage *backgroungBlur = [UIImage imageNamed:@"Background.png"];
-    //Применение функции размытия к нашему фону
-    UIImage *blurUmage = [self boxblurImage:backgroungBlur boxSize:boxsize];
     trackTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 70, containerView.bounds.size.width, containerView.bounds.size.height) style:UITableViewStylePlain];
-    //trackTableView.delegate = self;
-    //trackTableView.dataSource = self;
+    trackTableView.delegate = self;
+    trackTableView.dataSource = self;
     [trackTableView setBackgroundColor:[UIColor clearColor]];
     //установка фонового размытого изображения
-    trackTableView.backgroundColor = [UIColor colorWithPatternImage: blurUmage];
+    trackTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [containerView addSubview:trackTableView];
     [containerView bringSubviewToFront:trackTableView];
+    
+    UIImageView *leftBoarderTableView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"leftTableViewBoarders"]];
+    [leftBoarderTableView setFrame:CGRectMake(-20, 0, 90, trackTableView.bounds.size.height)];
+    [trackTableView addSubview: leftBoarderTableView];
+    [trackTableView sendSubviewToBack:leftBoarderTableView];
+    
+    UIImageView *rightBoarderTableView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"rightTableViewBoarders"]];
+    [rightBoarderTableView setFrame:CGRectMake(250,0, 90, trackTableView.bounds.size.height)];
+    [trackTableView addSubview: rightBoarderTableView];
+    [trackTableView sendSubviewToBack:rightBoarderTableView];
     
     showBoolVar = NO;
 
@@ -167,8 +176,9 @@
                     source = metaItem.stringValue;
                     nowPlayingLabel1.text = [NSString stringWithFormat:@"%@",source];
                     nowPlayingLabel2.text = [NSString stringWithFormat:@"%@",source];
+                    [songsDidPlayedMutableArray insertObject:source atIndex:0];
                     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-                    //[trackTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [trackTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                     [self textAnimationInLabel];
                    
                     NSLog(@"%@",source);
@@ -274,7 +284,7 @@
     {
         [UIView animateWithDuration:0.5f animations:^
          {
-             self.containerView.frame = CGRectMake(0, self.view.bounds.size.height-50,self.view.bounds.size.width, self.view.bounds.size.height);
+             self.containerView.frame = CGRectMake(0, self.view.bounds.size.height-70,self.view.bounds.size.width, self.view.bounds.size.height);
          }
          ];
         showBoolVar = NO;
@@ -302,14 +312,38 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return songsDidPlayedMutableArray.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [UIImage imageNamed:@"tableViewCell"].size.height;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     UITableViewCell *newCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"newCell"];
+    newCell.backgroundColor = [UIColor clearColor];
+    newCell.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"tableViewCell" ]];
+    newCell.selectedBackgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"tableViewCellPressed" ]];
+    newCell.textLabel.font = [UIFont fontWithName:@"Danger" size:20.0f];
+    newCell.textLabel.text = [NSString stringWithFormat:@"%@",source];
+    
+    UIImageView *leftBoarderTableViewCell = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"leftTableViewCellBoarder"]];
+    [leftBoarderTableViewCell setFrame:CGRectMake(-50, 30, 90, newCell.bounds.size.height)];
+    [newCell addSubview: leftBoarderTableViewCell];
+    [newCell bringSubviewToFront:leftBoarderTableViewCell];
+    
+    UIImageView *rightBoarderTableViewCell = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"rightTableViewCellBoarder"]];
+    [rightBoarderTableViewCell setFrame:CGRectMake(280,30, 90, newCell.bounds.size.height)];
+    [newCell addSubview: rightBoarderTableViewCell];
+    [newCell bringSubviewToFront:rightBoarderTableViewCell];
+
+    
     return newCell;
 }
+
 
 #pragma mark custom Functions
 -(void)textAnimationInLabel
