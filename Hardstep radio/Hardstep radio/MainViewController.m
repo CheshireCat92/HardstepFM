@@ -7,12 +7,12 @@
 //
 
 #import "MainViewController.h"
-#import "artistClass.h"
+
 
 
 @interface MainViewController ()
 {
-    artistClass *newMainArtist;
+    
 }
 
 @property int iterator;//временная хреновина
@@ -31,7 +31,7 @@
 @synthesize songsDidPlayedMutableArray;//массивы
 @synthesize iterator;//временная хреновина
 @synthesize ituneBuyLink;//url
-
+@synthesize artistId,artistName,artworkUrl100,trackId,trackName,collectionId,collectionName,fullArtistInfo;//инфа об артисте
 
 
 #pragma mark LifeCycle
@@ -321,6 +321,8 @@
     [self tableViewOutAnimation];
     //NSString *newPath = [[NSString alloc]initWithString:[self createSearchITunesURLfromMetadataString:source]];
     [self parseJSONandCreateITunesBuyLinkWithSource:source];
+    [self addDataToDescriptionView];
+    
 
 }
 
@@ -444,8 +446,9 @@
         NSLog(@" %i - %i",i,[songNameString characterAtIndex:i]);
         if ([songNameString characterAtIndex:i]==45)
         {
-            if ([songNameString characterAtIndex:i-1]==32) {
-                [artistNameString deleteCharactersInRange:NSMakeRange(i-1, artistNameString.length-i)];
+            if ([songNameString characterAtIndex:i-1]==32)
+            {
+                [artistNameString deleteCharactersInRange:NSMakeRange(i-1, artistNameString.length-i+1)];
             }
             [titleNameString deleteCharactersInRange:NSMakeRange(0, i+2)];
             NSLog(@"1Artist name is %@",artistNameString);
@@ -470,7 +473,8 @@
             [titleNameString deleteCharactersInRange:NSMakeRange(i, titleNameString.length-i)];
         }
     }
-    for (int i = 0;i<artistNameString.length; i++) {
+    for (int i = 0;i<artistNameString.length; i++)
+    {
         if ([artistNameString characterAtIndex:i]==32)
         {
             [artistNameString replaceCharactersInRange:NSMakeRange(i, 1) withString:@"+"];
@@ -478,6 +482,10 @@
         if ([artistNameString characterAtIndex:i]==45)
         {
             [artistNameString deleteCharactersInRange:NSMakeRange(i,1)];
+        }
+        if (i == artistNameString.length)
+        {
+            [artistNameString deleteCharactersInRange:NSMakeRange(artistNameString.length, 1)];
         }
     }
     
@@ -514,18 +522,59 @@
     //сливаем всю ифну об артисте в новый словарик
     NSDictionary *artistInfo = [resultJsonDict objectForKey:@"results"];
     NSLog(@"artist info is - %@",artistInfo);
-    NSLog(@"artis id is - %@",[artistInfo valueForKey:@"artistId"]);
-    //NSData *artistId = [NSData dataWithContentsOfMappedFile:[artistInfo objectForKey:@"artistId"]];
-    [newMainArtist setArtstID:[artistInfo objectForKey:@"artistId"]];
-    [newMainArtist setArtistName:[artistInfo valueForKey:@"artistId"]];
-    [newMainArtist setArtworkUrl100:[artistInfo valueForKey:@"artistId"]];
-    [newMainArtist setCollectionID:[artistInfo valueForKey:@"artistId"]];
-    [newMainArtist setCollectionName:[artistInfo valueForKey:@"artistId"]];
-    [newMainArtist setTrackID:[artistInfo valueForKey:@"artistId"]];
-    [newMainArtist setTrackName:[artistInfo valueForKey:@"artistId"]];
-    //NSLog(@"artistId is - %@",artistId);
+    NSLog(@"artist id is - %@",[artistInfo valueForKey:@"artistId"]);
+    NSMutableArray *tmpArray = [[NSMutableArray alloc]init];
+    //каждое значение - блядский словарь
+    [tmpArray insertObject:[artistInfo valueForKey:@"artistId"] atIndex:0];
+    artistId = [tmpArray objectAtIndex:0];
+    [tmpArray insertObject:[artistInfo valueForKey:@"artistName"] atIndex:1];
+    artistName = [tmpArray objectAtIndex:1];
+    [tmpArray insertObject:[artistInfo valueForKey:@"artworkUrl100"]atIndex:2];
+    artworkUrl100 =[tmpArray objectAtIndex:2];
+    [tmpArray insertObject:[artistInfo valueForKey:@"collectionId"]atIndex:3];
+    collectionId = [tmpArray objectAtIndex:3];
+    [tmpArray insertObject:[artistInfo valueForKey:@"collectionName"]atIndex:4];
+    collectionName = [tmpArray objectAtIndex:4];
+    [tmpArray insertObject:[artistInfo valueForKey:@"trackId"]atIndex:5];
+    trackId = [tmpArray objectAtIndex:5];
+    [tmpArray insertObject:[artistInfo valueForKey:@"trackName"]atIndex:6];
+    trackName = [tmpArray objectAtIndex:6];
+    fullArtistInfo = [[NSMutableArray alloc]initWithObjects:artistId,artistName,artworkUrl100,collectionName,collectionId,trackId,trackName, nil];
+    NSLog(@"newTMP string info is %@", fullArtistInfo);
+    for (int i =0; i<fullArtistInfo.count; i++) {
+        if (i == 0 )
+        {
+            NSArray *tmpArray2 = [[NSArray alloc]initWithArray:[fullArtistInfo objectAtIndex:i]];
+            NSNumber *theNwewObject = [[NSNumber alloc]initWithLong:[tmpArray2 objectAtIndex:0]];
+            [fullArtistInfo replaceObjectAtIndex:i withObject:theNwewObject];
+            
+        }
+        else if (i == 4)
+            {
+                NSArray *tmpArray2 = [[NSArray alloc]initWithArray:[fullArtistInfo objectAtIndex:i]];
+                NSNumber *theNwewObject = [[NSNumber alloc]initWithLong:[tmpArray2 objectAtIndex:0]];
+                [fullArtistInfo replaceObjectAtIndex:i withObject:theNwewObject];
+                
+            }
+        else if (i == 5 )
+                {
+                    NSArray *tmpArray2 = [[NSArray alloc]initWithArray:[fullArtistInfo objectAtIndex:i]];
+                    NSNumber *theNwewObject = [[NSNumber alloc]initWithLong:[tmpArray2 objectAtIndex:0]];
+                    [fullArtistInfo replaceObjectAtIndex:i withObject:theNwewObject];
+                    
+                }
+        else
+        {
+            NSArray *tmpArray2 = [[NSArray alloc]initWithArray:[fullArtistInfo objectAtIndex:i]];
+            NSString *theNwewObject = [[NSString alloc]initWithString:[tmpArray2 objectAtIndex:0]];
+            [fullArtistInfo replaceObjectAtIndex:i withObject:theNwewObject];//данный массив содержит инфу о исполнителе-песне. Необходимо создать общий массив, который будет хранить все массивы в духе fullArtistInfo
+            
+        }
     
-
+        
+    }
+    
+    NSLog(@"fullArtistInfo string info is %@", fullArtistInfo);
 }
 
 -(NSString*)decode:(NSMutableString*)BadSourceString
@@ -535,7 +584,17 @@
     return BadSourceString;
 }
 
-
+-(void)addDataToDescriptionView
+{
+    //скачиваем обложку альбома
+    NSString *urlString = [[NSString alloc]initWithString: [fullArtistInfo objectAtIndex:2]];
+    NSURL *theNewUrl = [[NSURL alloc]initWithString:urlString];
+    NSData *imageData = [[NSData alloc]initWithContentsOfURL:theNewUrl];
+    [songCoverImageView setImage:[UIImage imageWithData:imageData]];
+    //выставляем имя исполнителя
+    //выставляем название песни
+    //выставляем альбом, к которому принадлежит песня
+}
 
 @end
 

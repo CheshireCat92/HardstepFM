@@ -11,7 +11,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <Accelerate/Accelerate.h>
 #import "CJSONDeserializer.h"
-#import "artistClass.h"
+
 
 @interface MainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
@@ -24,6 +24,7 @@
     
     IBOutlet UIButton *playButton;
     IBOutlet UIButton *pauseButton;
+    
 }
 
 @property (strong, nonatomic) IBOutlet UIImageView *backLogo;
@@ -55,6 +56,17 @@
 @property (strong, nonatomic)UILabel *songNameLabel;
 @property (strong, nonatomic)UILabel *songAlbumNameLabel;
 @property (strong, nonatomic)NSURL *ituneBuyLink;
+
+//artistInfo
+@property (strong, nonatomic) NSMutableArray* fullArtistInfo;
+@property (strong, nonatomic) NSString* artworkUrl100;
+@property (strong, nonatomic) NSString* artistId;
+@property (strong, nonatomic) NSString* artistName;
+@property (strong, nonatomic) NSString* collectionId;
+@property (strong, nonatomic) NSString* collectionName;
+@property (strong, nonatomic) NSString* trackId;
+@property (strong, nonatomic) NSString* trackName;
+
 
 
 @property NSString *source;
