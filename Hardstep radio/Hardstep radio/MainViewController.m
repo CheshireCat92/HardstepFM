@@ -259,6 +259,7 @@
             {
                 //Обработка мета данных
                 NSArray *meta = [playerItem timedMetadata];
+                
                 for (AVMetadataItem *metaItem in meta)
                 {
                     NSMutableString *tmpString = [[NSMutableString alloc]initWithString:metaItem.stringValue];
@@ -268,9 +269,16 @@
                     nowPlayingLabel2.text = [NSString stringWithFormat:@"%@",source];
                    
                     NSLog(@"%@",source);
+                    
+                    if (source.length >= 25)//числа будут примерно в диапазоне 15-20
+                    {
+                        NSLog(@"Анимация");
+                        [self textAnimationInLabel];
+                    }
                 }
                 [self textAnimationInLabel];
                 [songsDidPlayedMutableArray addObject:source];
+                
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
                 [trackTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                 
@@ -286,7 +294,6 @@
 
 - (void)playPause
 {
-
 }
 
 
