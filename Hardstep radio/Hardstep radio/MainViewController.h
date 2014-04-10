@@ -20,7 +20,7 @@
     AVPlayer *player;
     
     //мета данные
-    NSString *source;
+    NSMutableString *source;
     
     IBOutlet UIButton *playButton;
     IBOutlet UIButton *pauseButton;

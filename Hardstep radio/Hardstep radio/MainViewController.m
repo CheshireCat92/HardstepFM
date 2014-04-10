@@ -154,7 +154,7 @@
     modalViewIsShow = NO;
 
 #pragma mark - ModalView Description Settings
-    descriptionContainerView = [[UIView alloc]initWithFrame:CGRectMake(320, 70,320,389)];
+    descriptionContainerView = [[UIView alloc]initWithFrame:CGRectMake(0, 70,320,389)];
     descriptionContainerView.hidden = NO;
     descriptionContainerView.backgroundColor = [UIColor clearColor];
     [self.containerView addSubview:descriptionContainerView];
@@ -188,6 +188,47 @@
     songCoverImageView.backgroundColor = [UIColor blackColor];
     [descriptionContainerView addSubview:songCoverImageView];
     [descriptionContainerView bringSubviewToFront:songCoverImageView];
+    
+    UIImageView *songLabelImage = [UIImageView new];
+    songLabelImage.backgroundColor = [UIColor clearColor];
+    songLabelImage.image = [UIImage imageNamed:@"trackDisplayVar2"];
+    songLabelImage.frame = CGRectMake(0, 0, 50, 50);
+    [descriptionContainerView addSubview:songLabelImage];
+    [descriptionContainerView bringSubviewToFront:songLabelImage];
+
+    UIImageView *songArtistImage = [UIImageView new];
+    songArtistImage.backgroundColor = [UIColor clearColor];
+    songArtistImage.image = [UIImage imageNamed:@"trackDisplayVar2"];
+    songArtistImage.frame = CGRectMake(160, 220, 150, 40);
+    [descriptionContainerView addSubview:songArtistImage];
+    [descriptionContainerView bringSubviewToFront:songArtistImage];
+    
+    UIImageView *songAlbumImage = [UIImageView new];
+    songAlbumImage.backgroundColor = [UIColor clearColor];
+    songAlbumImage.image = [UIImage imageNamed:@"trackDisplayVar2"];
+    songAlbumImage.frame = CGRectMake(20, 220, 150, 40);
+    [descriptionContainerView addSubview:songAlbumImage];
+    [descriptionContainerView bringSubviewToFront:songAlbumImage];
+    
+    songArtistLabel = [[UILabel alloc]init];
+    songArtistLabel.backgroundColor =[UIColor clearColor];
+    songArtistLabel.font = [UIFont fontWithName:@"Danger" size:25];
+    [descriptionContainerView addSubview:songArtistLabel];
+    [descriptionContainerView bringSubviewToFront:songArtistLabel];
+    
+    songAlbumNameLabel = [[UILabel alloc]init];
+    songAlbumNameLabel.backgroundColor = [UIColor clearColor];
+    songAlbumNameLabel.font = [UIFont fontWithName:@"Danger" size:25];
+    [descriptionContainerView addSubview:songAlbumNameLabel];
+    [descriptionContainerView bringSubviewToFront:songAlbumNameLabel];
+    
+    songNameLabel = [[UILabel alloc]init];
+    songNameLabel.backgroundColor = [UIColor clearColor];
+    songNameLabel.font = [UIFont fontWithName:@"Danger" size:25];
+    [descriptionContainerView addSubview:songNameLabel];
+    [descriptionContainerView bringSubviewToFront:songNameLabel];
+    
+    
     
     
     
@@ -577,7 +618,7 @@
     NSLog(@"fullArtistInfo string info is %@", fullArtistInfo);
 }
 
--(NSString*)decode:(NSMutableString*)BadSourceString
+-(NSMutableString*)decode:(NSMutableString*)BadSourceString
 {
     [BadSourceString dataUsingEncoding:NSWindowsCP1251StringEncoding];
     NSLog(@"bad string - %@", BadSourceString);
