@@ -8,15 +8,12 @@
 
 #import "MainViewController.h"
 
-
-
 @interface MainViewController ()
 {
     
 }
 
 @property int iterator;//временная хреновина
-
 
 @end
 
@@ -33,8 +30,7 @@
 @synthesize ituneBuyLink;//url
 @synthesize artistId,artistName,artworkUrl100,trackId,trackName,collectionId,collectionName,fullArtistInfo;//инфа об артисте
 
-
-#pragma mark LifeCycle
+#pragma mark - LifeCycle
 
 - (void)viewDidLoad
 {
@@ -43,11 +39,36 @@
     songsDidPlayedMutableArray = [NSMutableArray new];
     iterator+=1;
     
+    pauseButton.hidden = YES;
     
-#pragma mark - Stream Settings
     //Адрес потока
     NSString *stringURL = @"http://89.221.207.241:8888/";
     NSURL *streamURL = [NSURL URLWithString:stringURL];
+    
+    
+    audioStream = [[FSAudioStream alloc]init];
+    audioController = [[FSAudioController alloc] initWithUrl:streamURL];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(audioStreamStateDidChange:)
+                                                 name:FSAudioStreamStateChangeNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(audioStreamMetaDataAvailable:)
+                                                 name:FSAudioStreamMetaDataNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(audioStreamErrorOccurred:)
+                                                 name:FSAudioStreamErrorNotification
+                                               object:nil];
+   
+    //Настройки класса плеера
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
     //настройка play/pause, логотипа и главного фона
     UIImage *backgroung = [UIImage imageNamed:@"Background.png"];
@@ -62,21 +83,6 @@
     [playButton setImage:[UIImage imageNamed:@"Play.png"] forState:UIControlStateNormal];
     [pauseButton setTitle:@"" forState:UIControlStateNormal];
     [pauseButton setImage:[UIImage imageNamed:@"stop.png"] forState:UIControlStateNormal];
-    
-    pauseButton.hidden = YES;
-
-    //Настройки класса плеера
-    asset = [AVURLAsset URLAssetWithURL:streamURL options:nil];
-    playerItem = [AVPlayerItem playerItemWithAsset:asset];
-    player = [AVPlayer playerWithPlayerItem:playerItem];
-    player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-    
-    [playerItem addObserver:self forKeyPath:@"timedMetadata" options:NSKeyValueObservingOptionNew context:nil];
-    [player addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-    
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-    [[AVAudioSession sharedInstance] setActive:YES error:nil];
-    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
 #pragma mark - ModalView Settings
     //настройка контейнера для тейбл-вьюхи
@@ -113,9 +119,7 @@
     [openCloseModalTableView addSubview:nowPlayingLabel2];
     [openCloseModalTableView bringSubviewToFront:nowPlayingLabel2];
     
-    
-    
-    UIImageView *bottomBoarderTrackDisplay = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"trackBottomBoarder"]];
+        UIImageView *bottomBoarderTrackDisplay = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"trackBottomBoarder"]];
     [bottomBoarderTrackDisplay setFrame:CGRectMake(-10, 10, openCloseModalTableView.bounds.size.width, openCloseModalTableView.bounds.size.height)];
     [openCloseModalTableView addSubview: bottomBoarderTrackDisplay];
     [openCloseModalTableView bringSubviewToFront:bottomBoarderTrackDisplay];
@@ -130,8 +134,6 @@
     [openCloseModalTableView addSubview: rightBoarderTrackDisplay];
     [openCloseModalTableView bringSubviewToFront:rightBoarderTrackDisplay];
     
-    
-
     trackTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 70, containerView.bounds.size.width, containerView.bounds.size.height) style:UITableViewStylePlain];
     trackTableView.delegate = self;
     trackTableView.dataSource = self;
@@ -183,7 +185,6 @@
     [descriptionContainerView addSubview:itunesBuyTrackButton];
     [descriptionContainerView bringSubviewToFront:itunesBuyTrackButton];
     
-    
     songCoverImageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 150, 150)];
     songCoverImageView.backgroundColor = [UIColor blackColor];
     [descriptionContainerView addSubview:songCoverImageView];
@@ -227,96 +228,122 @@
     songNameLabel.font = [UIFont fontWithName:@"Danger" size:25];
     [descriptionContainerView addSubview:songNameLabel];
     [descriptionContainerView bringSubviewToFront:songNameLabel];
+}
+
+#pragma mark - Stream Functions
+
+- (void)audioStreamMetaDataAvailable:(NSNotification *)notification
+{
+    NSDictionary *dict = [notification userInfo];
+    NSDictionary *metaData = [dict valueForKey:FSAudioStreamNotificationKey_MetaData];
     
+    NSMutableString *streamInfo = [[NSMutableString alloc] init];
     
+    if (metaData[@"StreamTitle"])
+    {
+        [streamInfo appendString:metaData[@"StreamTitle"]];
+    }
     
-    
-    
+    nowPlayingLabel1.text = streamInfo;
+    NSLog(@"%@",streamInfo);
     
 }
 
-#pragma mark Functions
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context
+- (void)audioStreamStateDidChange:(NSNotification *)notification
 {
-    if ([keyPath isEqualToString:@"status"])
-    {
-        AVPlayerItem *pItem = (AVPlayerItem *)object;
-        if (pItem.status == AVPlayerItemStatusReadyToPlay)
-        {
-            [self playPause];
-        }
-    }
+    NSString *statusRetrievingURL = @"Retrieving stream URL";
+    NSString *statusBuffering = @"Buffering...";
+    NSString *statusSeeking = @"Seeking...";
+    NSString *statusEmpty = @"";
     
-    if ([keyPath isEqualToString:@"timedMetadata"] && [self isPlaying])
+    NSDictionary *dict = [notification userInfo];
+    int state = [[dict valueForKey:FSAudioStreamNotificationKey_State] intValue];
+    
+    switch (state)
     {
-        for (AVPlayerItemTrack *item in player.currentItem.tracks)
-        {
-            if ([item.assetTrack.mediaType isEqual:AVMediaTypeAudio])
+        case kFsAudioStreamRetrievingURL:
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            
+            nowPlayingLabel1.text = statusRetrievingURL;
+            break;
+            
+        case kFsAudioStreamStopped:
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            
+            nowPlayingLabel1.text = statusEmpty;
+            break;
+            
+        case kFsAudioStreamBuffering:
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            
+            nowPlayingLabel1.text = statusBuffering;
+            break;
+            
+        case kFsAudioStreamSeeking:
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            
+            nowPlayingLabel1.text = statusSeeking;
+            break;
+            
+        case kFsAudioStreamPlaying:
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            
+            if ([nowPlayingLabel1.text isEqualToString:statusBuffering] ||
+                [nowPlayingLabel1.text isEqualToString:statusRetrievingURL] ||
+                [nowPlayingLabel1.text isEqualToString:statusSeeking])
             {
-                //Обработка мета данных
-                NSArray *meta = [playerItem timedMetadata];
-                
-                for (AVMetadataItem *metaItem in meta)
-                {
-                    NSMutableString *tmpString = [[NSMutableString alloc]initWithString:metaItem.stringValue];
-                    source = [self decode:tmpString];
-                    
-                    nowPlayingLabel1.text = [NSString stringWithFormat:@"%@",source];
-                    nowPlayingLabel2.text = [NSString stringWithFormat:@"%@",source];
-                   
-                    NSLog(@"%@",source);
-                    
-                    if (source.length >= 25)//числа будут примерно в диапазоне 15-20
-                    {
-                        NSLog(@"Анимация");
-                        [self textAnimationInLabel];
-                    }
-                }
-                [self textAnimationInLabel];
-                [songsDidPlayedMutableArray addObject:source];
-                
-                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-                [trackTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                
+                nowPlayingLabel1.text = statusEmpty;
             }
-        }
+            break;
+            
+        case kFsAudioStreamFailed:
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            break;
     }
 }
 
-- (BOOL)isPlaying
+- (void)audioStreamErrorOccurred:(NSNotification *)notification
 {
-    return [player rate] != 0.f;
+    NSDictionary *dict = [notification userInfo];
+    int errorCode = [[dict valueForKey:FSAudioStreamNotificationKey_Error] intValue];
+    
+    switch (errorCode) {
+        case kFsAudioStreamErrorOpen:
+            nowPlayingLabel1.text = @"Cannot open the audio stream";
+            break;
+        case kFsAudioStreamErrorStreamParse:
+            nowPlayingLabel1.text = @"Cannot read the audio stream";
+            break;
+        case kFsAudioStreamErrorNetwork:
+            nowPlayingLabel1.text = @"Network failed: cannot play the audio stream";
+            break;
+        case kFsAudioStreamErrorUnsupportedFormat:
+            nowPlayingLabel1.text = @"Unsupported format";
+            break;
+        default:
+            nowPlayingLabel1.text = @"Unknown error occurred";
+            break;
+    }
 }
-
-- (void)playPause
-{
-}
-
-
 
 #pragma mark Actions
 
 - (IBAction)play:(id)sender
 {
-    [player play];
+    [audioController play];
     playButton.hidden = YES;
     pauseButton.hidden = NO;
 }
 
 - (IBAction)pause:(id)sender
 {
-    [player pause];
+    [audioController stop];
     playButton.hidden = NO;
     pauseButton.hidden = YES;
 }
 
-
-
 #pragma mark - TableView functions and Methods
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -376,6 +403,7 @@
 
 
 #pragma mark custom Functions
+
 -(void)textAnimationInLabel
 {
         [UILabel animateWithDuration:15.5f
