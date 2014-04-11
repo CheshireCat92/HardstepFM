@@ -49,6 +49,9 @@
 		FF4B8A2D18E0889E009467C2 /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4B8A2918E0889E009467C2 /* Play.png */; };
 		FF4B8A2E18E0889E009467C2 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4B8A2A18E0889E009467C2 /* stop.png */; };
 		FF4B8A2F18E0895F009467C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45237B3718C9CCBC00A20A61 /* Main.storyboard */; };
+		FF6A164718F8674000FCBBD6 /* boarderDetailView.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6A164418F8674000FCBBD6 /* boarderDetailView.png */; };
+		FF6A164818F8674000FCBBD6 /* CabelDescriptionView.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6A164518F8674000FCBBD6 /* CabelDescriptionView.png */; };
+		FF6A164918F8674000FCBBD6 /* GridDetailView.png in Resources */ = {isa = PBXBuildFile; fileRef = FF6A164618F8674000FCBBD6 /* GridDetailView.png */; };
 		FFA6421818E1C54E005389E7 /* trackDisplayVar2.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA6421718E1C54E005389E7 /* trackDisplayVar2.png */; };
 		FFA6421B18E1C75D005389E7 /* SawBoarder.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA6421918E1C75D005389E7 /* SawBoarder.png */; };
 		FFA6421C18E1C75D005389E7 /* trackBottomBoarder.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA6421A18E1C75D005389E7 /* trackBottomBoarder.png */; };
@@ -136,6 +139,9 @@
 		FF4B8A2818E0889E009467C2 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		FF4B8A2918E0889E009467C2 /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
 		FF4B8A2A18E0889E009467C2 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
+		FF6A164418F8674000FCBBD6 /* boarderDetailView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boarderDetailView.png; sourceTree = "<group>"; };
+		FF6A164518F8674000FCBBD6 /* CabelDescriptionView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CabelDescriptionView.png; sourceTree = "<group>"; };
+		FF6A164618F8674000FCBBD6 /* GridDetailView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GridDetailView.png; sourceTree = "<group>"; };
 		FFA6421718E1C54E005389E7 /* trackDisplayVar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trackDisplayVar2.png; sourceTree = "<group>"; };
 		FFA6421918E1C75D005389E7 /* SawBoarder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SawBoarder.png; sourceTree = "<group>"; };
 		FFA6421A18E1C75D005389E7 /* trackBottomBoarder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trackBottomBoarder.png; sourceTree = "<group>"; };
@@ -322,6 +328,7 @@
 		455E656618CA8A3000721641 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FF6A164A18F8674800FCBBD6 /* DetailViewImages */,
 				FFA6422D18E2EA5E005389E7 /* tableViewImages */,
 				FFA6422E18E2EB03005389E7 /* trackDisplayImages */,
 				FF4B8A2718E0889E009467C2 /* Background.png */,
@@ -333,6 +340,16 @@
 				457908F818D396F500292173 /* icon-120.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		FF6A164A18F8674800FCBBD6 /* DetailViewImages */ = {
+			isa = PBXGroup;
+			children = (
+				FF6A164418F8674000FCBBD6 /* boarderDetailView.png */,
+				FF6A164518F8674000FCBBD6 /* CabelDescriptionView.png */,
+				FF6A164618F8674000FCBBD6 /* GridDetailView.png */,
+			);
+			name = DetailViewImages;
 			sourceTree = "<group>";
 		};
 		FFA6422D18E2EA5E005389E7 /* tableViewImages */ = {
@@ -459,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFA6423018E2F4F3005389E7 /* tableViewCellPressed.png in Resources */,
+				FF6A164918F8674000FCBBD6 /* GridDetailView.png in Resources */,
 				FF4B8A2F18E0895F009467C2 /* Main.storyboard in Resources */,
 				45237B3E18C9CCBC00A20A61 /* Images.xcassets in Resources */,
 				FFA6421C18E1C75D005389E7 /* trackBottomBoarder.png in Resources */,
@@ -466,6 +484,7 @@
 				45237B3018C9CCBC00A20A61 /* InfoPlist.strings in Resources */,
 				FF4B8A2618E06BEB009467C2 /* Danger.otf in Resources */,
 				455E918618E0A7F00079A994 /* logo_back.png in Resources */,
+				FF6A164818F8674000FCBBD6 /* CabelDescriptionView.png in Resources */,
 				457908F918D396F600292173 /* icon-120.png in Resources */,
 				FFA6422918E2E9DE005389E7 /* leftTableViewCellBoarder.png in Resources */,
 				FFA6422818E2E9DE005389E7 /* leftTableViewBoarders.png in Resources */,
@@ -475,6 +494,7 @@
 				FFA6422A18E2E9DE005389E7 /* rightTableViewBoarders.png in Resources */,
 				455E918418E0A6C50079A994 /* logo_font.png in Resources */,
 				FF4B8A2B18E0889E009467C2 /* Background.png in Resources */,
+				FF6A164718F8674000FCBBD6 /* boarderDetailView.png in Resources */,
 				FFA6421B18E1C75D005389E7 /* SawBoarder.png in Resources */,
 				FF4B8A2D18E0889E009467C2 /* Play.png in Resources */,
 				FF4B8A2E18E0889E009467C2 /* stop.png in Resources */,

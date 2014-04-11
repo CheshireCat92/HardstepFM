@@ -173,6 +173,14 @@
     [descriptionContainerView addSubview:backToTableViewButton];
     [descriptionContainerView bringSubviewToFront:backToTableViewButton];
     
+    UIImageView *cablePackRight = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"rightTableViewBoarders"]];
+    cablePackRight.frame = CGRectMake(220, 40, 50, 170);
+    [descriptionContainerView addSubview:cablePackRight];
+    
+    UIImageView *cabelPackCornerRight = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"rightTableViewCellBoarder"]];
+    cabelPackCornerRight.frame = CGRectMake(150, 40, 100, 100);
+    [descriptionContainerView addSubview:cabelPackCornerRight];
+    
     itunesBuyTrackButton = [[UIButton alloc]initWithFrame:CGRectMake(190, 10, 130, 50)];
     itunesBuyTrackButton.backgroundColor = [UIColor clearColor];
     [itunesBuyTrackButton setBackgroundImage:[UIImage imageNamed:@"tableViewCell.png"] forState:UIControlStateNormal];
@@ -185,49 +193,104 @@
     [descriptionContainerView addSubview:itunesBuyTrackButton];
     [descriptionContainerView bringSubviewToFront:itunesBuyTrackButton];
     
+    UIImageView *songLabelImage = [UIImageView new];
+    songLabelImage.backgroundColor = [UIColor clearColor];
+    songLabelImage.image = [UIImage imageNamed:@"trackDisplayVar2"];
+    songLabelImage.frame = CGRectMake(20, 176, 290, 40);
+    [descriptionContainerView addSubview:songLabelImage];
+    [descriptionContainerView bringSubviewToFront:songLabelImage];
+    
+    UIImageView *songAlbumImage = [UIImageView new]; //нижний текст
+    songAlbumImage.backgroundColor = [UIColor clearColor];
+    songAlbumImage.image = [UIImage imageNamed:@"trackDisplayVar2"];
+    songAlbumImage.frame = CGRectMake(20, 220, 290, 40);
+    [descriptionContainerView addSubview:songAlbumImage];
+    [descriptionContainerView bringSubviewToFront:songAlbumImage];
+    
+    
+    songAlbumNameLabel = [[UILabel alloc]init];
+    songAlbumNameLabel.backgroundColor = [UIColor clearColor];
+    songAlbumNameLabel.font = [UIFont fontWithName:@"Danger" size:25];
+    songAlbumNameLabel.frame = CGRectMake(20, 174, 290, 40);
+    songAlbumNameLabel.textColor = [UIColor orangeColor];
+    songAlbumNameLabel.textAlignment = NSTextAlignmentCenter;
+    [descriptionContainerView addSubview:songAlbumNameLabel];
+    [descriptionContainerView bringSubviewToFront:songAlbumNameLabel];
+    
+    songArtistLabel = [[UILabel alloc]init];
+    songArtistLabel.backgroundColor =[UIColor clearColor];
+    songArtistLabel.font = [UIFont fontWithName:@"Danger" size:25];
+    songArtistLabel.frame = CGRectMake(20, 218, 150, 40);
+    songArtistLabel.textColor = [UIColor orangeColor];
+    songArtistLabel.textAlignment = NSTextAlignmentCenter;
+    [descriptionContainerView addSubview:songArtistLabel];
+    [descriptionContainerView bringSubviewToFront:songArtistLabel];
+    
+    
+    songNameLabel = [[UILabel alloc]init];
+    songNameLabel.backgroundColor = [UIColor clearColor];
+    songNameLabel.font = [UIFont fontWithName:@"Danger" size:25];
+    songNameLabel.frame = CGRectMake(160, 218, 150, 40);
+    songNameLabel.textColor = [UIColor orangeColor];
+    songNameLabel.textAlignment = NSTextAlignmentCenter;
+    [descriptionContainerView addSubview:songNameLabel];
+    [descriptionContainerView bringSubviewToFront:songNameLabel];
+    
+    UIImageView *albumeNameBoarder = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"trackBottomBoarder"]];
+    albumeNameBoarder.frame = CGRectMake(0, 182, 320, 40);
+    [descriptionContainerView addSubview:albumeNameBoarder];
+    [descriptionContainerView bringSubviewToFront:albumeNameBoarder];
+    
+    UIImageView *artistNameBoarder = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"trackBottomBoarder"]];
+    artistNameBoarder.frame = CGRectMake(0, 227, 320, 40);
+    [descriptionContainerView addSubview:artistNameBoarder];
+    [descriptionContainerView bringSubviewToFront:artistNameBoarder];
+    
+    UIImageView *albumeCoverBoarderRight = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"trackBottomBoarder"]];
+    albumeCoverBoarderRight.frame = CGRectMake(75, 68, 180, 40);
+    albumeCoverBoarderRight.transform = CGAffineTransformMakeRotation(4.7124);
+    [descriptionContainerView addSubview:albumeCoverBoarderRight];
+    [descriptionContainerView bringSubviewToFront:albumeCoverBoarderRight];
+    
+    UIImageView *albumeCoverBoarderLeft = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"trackBottomBoarder"]];
+    albumeCoverBoarderLeft.frame = CGRectMake(-65, 62, 180, 40);
+    albumeCoverBoarderLeft.transform = CGAffineTransformMakeRotation(1.5708);
+    [descriptionContainerView addSubview:albumeCoverBoarderLeft];
+    [descriptionContainerView bringSubviewToFront:albumeCoverBoarderLeft];
+    
+    UIImageView *chainRight = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"GridDetailView" ]];
+    chainRight.frame = CGRectMake(302, 50, 10, 143);
+    [descriptionContainerView addSubview:chainRight];
+    
+    UIImageView *chainRightLow = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"CabelDescriptionView" ]];
+    chainRightLow.frame = CGRectMake(280, 213, 50, 10);
+    chainRightLow.transform = CGAffineTransformMakeRotation(1.5708);
+    [descriptionContainerView addSubview:chainRightLow];
+    
+    UIImageView *chainLeftLow = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"CabelDescriptionView" ]];
+    chainLeftLow.frame = CGRectMake(0, 213, 43, 10);
+    chainLeftLow.transform = CGAffineTransformMakeRotation(1.5708);
+    [descriptionContainerView addSubview:chainLeftLow];
+    
+    UIImageView *cabelCoverHi = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"CabelDescriptionView"]];
+    cabelCoverHi.frame = CGRectMake(33, 3, 129, 15);
+    [descriptionContainerView addSubview:cabelCoverHi];
+
+    UIImageView *cabelCoverLow = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"CabelDescriptionView"]];
+    cabelCoverLow.frame = CGRectMake(34, 161, 129, 15);
+    [descriptionContainerView addSubview:cabelCoverLow];
+    
+    UIImageView *chainLeft = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"GridDetailView" ]];
+    chainLeft.frame = CGRectMake(20, 50, 10, 143);
+    [descriptionContainerView addSubview:chainLeft];
+    
+    
     songCoverImageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 150, 150)];
     songCoverImageView.backgroundColor = [UIColor blackColor];
     [descriptionContainerView addSubview:songCoverImageView];
     [descriptionContainerView bringSubviewToFront:songCoverImageView];
     
-    UIImageView *songLabelImage = [UIImageView new];
-    songLabelImage.backgroundColor = [UIColor clearColor];
-    songLabelImage.image = [UIImage imageNamed:@"trackDisplayVar2"];
-    songLabelImage.frame = CGRectMake(0, 0, 50, 50);
-    [descriptionContainerView addSubview:songLabelImage];
-    [descriptionContainerView bringSubviewToFront:songLabelImage];
-
-    UIImageView *songArtistImage = [UIImageView new];
-    songArtistImage.backgroundColor = [UIColor clearColor];
-    songArtistImage.image = [UIImage imageNamed:@"trackDisplayVar2"];
-    songArtistImage.frame = CGRectMake(160, 220, 150, 40);
-    [descriptionContainerView addSubview:songArtistImage];
-    [descriptionContainerView bringSubviewToFront:songArtistImage];
     
-    UIImageView *songAlbumImage = [UIImageView new];
-    songAlbumImage.backgroundColor = [UIColor clearColor];
-    songAlbumImage.image = [UIImage imageNamed:@"trackDisplayVar2"];
-    songAlbumImage.frame = CGRectMake(20, 220, 150, 40);
-    [descriptionContainerView addSubview:songAlbumImage];
-    [descriptionContainerView bringSubviewToFront:songAlbumImage];
-    
-    songArtistLabel = [[UILabel alloc]init];
-    songArtistLabel.backgroundColor =[UIColor clearColor];
-    songArtistLabel.font = [UIFont fontWithName:@"Danger" size:25];
-    [descriptionContainerView addSubview:songArtistLabel];
-    [descriptionContainerView bringSubviewToFront:songArtistLabel];
-    
-    songAlbumNameLabel = [[UILabel alloc]init];
-    songAlbumNameLabel.backgroundColor = [UIColor clearColor];
-    songAlbumNameLabel.font = [UIFont fontWithName:@"Danger" size:25];
-    [descriptionContainerView addSubview:songAlbumNameLabel];
-    [descriptionContainerView bringSubviewToFront:songAlbumNameLabel];
-    
-    songNameLabel = [[UILabel alloc]init];
-    songNameLabel.backgroundColor = [UIColor clearColor];
-    songNameLabel.font = [UIFont fontWithName:@"Danger" size:25];
-    [descriptionContainerView addSubview:songNameLabel];
-    [descriptionContainerView bringSubviewToFront:songNameLabel];
 }
 
 #pragma mark - Stream Functions
@@ -244,8 +307,21 @@
         [streamInfo appendString:metaData[@"StreamTitle"]];
     }
     
-    nowPlayingLabel1.text = streamInfo;
-    NSLog(@"%@",streamInfo);
+    source = streamInfo;
+    nowPlayingLabel1.text = [NSString stringWithFormat:@"%@",source];
+    nowPlayingLabel2.text = [NSString stringWithFormat:@"%@",source];
+
+    NSLog(@"source is - %@",source);
+    if (source.length >= 25)//числа будут примерно в диапазоне 15-20
+    {
+        NSLog(@"Анимация");
+        [self textAnimationInLabel];
+    }
+    else
+    {
+        //[self textAnimationInLabel];
+    }
+    NSLog(@"Song played - %@",streamInfo);
     
 }
 
@@ -292,33 +368,7 @@
                 [nowPlayingLabel1.text isEqualToString:statusRetrievingURL] ||
                 [nowPlayingLabel1.text isEqualToString:statusSeeking])
             {
-                //Обработка мета данных
-                NSArray *meta = [playerItem timedMetadata];
-                
-                for (AVMetadataItem *metaItem in meta)
-                {
-                    NSMutableString *tmpString = [[NSMutableString alloc]initWithString:metaItem.stringValue];
-                    source = [self decode:tmpString];
-                    
-                    nowPlayingLabel1.text = [NSString stringWithFormat:@"%@",source];
-                    nowPlayingLabel2.text = [NSString stringWithFormat:@"%@",source];
-                   
-                    NSLog(@"%@",source);
-                    
-                    if (source.length >= 25)//числа будут примерно в диапазоне 15-20
-                    {
-                        NSLog(@"Анимация");
-                        [self textAnimationInLabel];
-                    }
-                }
-                [self textAnimationInLabel];
-                
-                [songsDidPlayedMutableArray addObject:source];
-                
-                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-                [trackTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                
-
+                nowPlayingLabel1.text = statusEmpty;
             }
             break;
             
@@ -369,8 +419,8 @@
 }
 
 
-#pragma mark - TableView functions and Methods
 
+#pragma mark - TableView functions and Methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -695,8 +745,15 @@
     NSData *imageData = [[NSData alloc]initWithContentsOfURL:theNewUrl];
     [songCoverImageView setImage:[UIImage imageWithData:imageData]];
     //выставляем имя исполнителя
+    NSString *artistString = [[NSString alloc]initWithString:[fullArtistInfo objectAtIndex:1]];
+    songArtistLabel.text = artistString;
     //выставляем название песни
+    NSString *songNameString = [[NSString alloc]initWithString:[fullArtistInfo objectAtIndex:6]];
+    songNameLabel.text = songNameString;
     //выставляем альбом, к которому принадлежит песня
+    NSString *albumeNameString = [[NSString alloc]initWithString:[fullArtistInfo objectAtIndex:3]];
+    songAlbumNameLabel.text = albumeNameString;
+    
 }
 
 @end
