@@ -22,6 +22,23 @@
 		45237B4718C9CCBC00A20A61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45237B2918C9CCBC00A20A61 /* UIKit.framework */; };
 		45237B4F18C9CCBC00A20A61 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45237B4D18C9CCBC00A20A61 /* InfoPlist.strings */; };
 		45237B5118C9CCBC00A20A61 /* Hardstep_radioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45237B5018C9CCBC00A20A61 /* Hardstep_radioTests.m */; };
+		452684C518F748D700DA409C /* audio_queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452684A818F748D700DA409C /* audio_queue.cpp */; };
+		452684C618F748D700DA409C /* audio_stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452684AA18F748D700DA409C /* audio_stream.cpp */; };
+		452684C718F748D700DA409C /* file_output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452684AC18F748D700DA409C /* file_output.cpp */; };
+		452684C818F748D700DA409C /* http_stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452684AE18F748D700DA409C /* http_stream.cpp */; };
+		452684C918F748D700DA409C /* id3_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452684B018F748D700DA409C /* id3_parser.cpp */; };
+		452684CA18F748D700DA409C /* stream_configuration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 452684B218F748D700DA409C /* stream_configuration.cpp */; };
+		452684CB18F748D700DA409C /* FSAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452684B618F748D700DA409C /* FSAudioController.m */; };
+		452684CC18F748D700DA409C /* FSAudioStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = 452684B818F748D700DA409C /* FSAudioStream.mm */; };
+		452684CD18F748D700DA409C /* FSCheckContentTypeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 452684BA18F748D700DA409C /* FSCheckContentTypeRequest.m */; };
+		452684CE18F748D700DA409C /* FSParsePlaylistRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 452684BC18F748D700DA409C /* FSParsePlaylistRequest.m */; };
+		452684CF18F748D700DA409C /* FSParseRssPodcastFeedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 452684BE18F748D700DA409C /* FSParseRssPodcastFeedRequest.m */; };
+		452684D018F748D700DA409C /* FSPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 452684C018F748D700DA409C /* FSPlaylistItem.m */; };
+		452684D118F748D700DA409C /* FSXMLHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 452684C218F748D700DA409C /* FSXMLHttpRequest.m */; };
+		452684D218F748D700DA409C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 452684C418F748D700DA409C /* Reachability.m */; };
+		452684D518F7493800DA409C /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 452684D418F7493800DA409C /* libxml2.dylib */; };
+		452684D718F7494700DA409C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452684D618F7494700DA409C /* AudioToolbox.framework */; };
+		452684D918F7494D00DA409C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 452684D818F7494D00DA409C /* CFNetwork.framework */; };
 		455E918418E0A6C50079A994 /* logo_font.png in Resources */ = {isa = PBXBuildFile; fileRef = 455E918318E0A6C50079A994 /* logo_font.png */; };
 		455E918618E0A7F00079A994 /* logo_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 455E918518E0A7F00079A994 /* logo_back.png */; };
 		457908F718D3481900292173 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457908F618D3481900292173 /* MainViewController.m */; };
@@ -78,6 +95,37 @@
 		45237B4C18C9CCBC00A20A61 /* Hardstep radioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hardstep radioTests-Info.plist"; sourceTree = "<group>"; };
 		45237B4E18C9CCBC00A20A61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		45237B5018C9CCBC00A20A61 /* Hardstep_radioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hardstep_radioTests.m; sourceTree = "<group>"; };
+		452684A818F748D700DA409C /* audio_queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio_queue.cpp; sourceTree = "<group>"; };
+		452684A918F748D700DA409C /* audio_queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_queue.h; sourceTree = "<group>"; };
+		452684AA18F748D700DA409C /* audio_stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio_stream.cpp; sourceTree = "<group>"; };
+		452684AB18F748D700DA409C /* audio_stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_stream.h; sourceTree = "<group>"; };
+		452684AC18F748D700DA409C /* file_output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_output.cpp; sourceTree = "<group>"; };
+		452684AD18F748D700DA409C /* file_output.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_output.h; sourceTree = "<group>"; };
+		452684AE18F748D700DA409C /* http_stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_stream.cpp; sourceTree = "<group>"; };
+		452684AF18F748D700DA409C /* http_stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_stream.h; sourceTree = "<group>"; };
+		452684B018F748D700DA409C /* id3_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = id3_parser.cpp; sourceTree = "<group>"; };
+		452684B118F748D700DA409C /* id3_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = id3_parser.h; sourceTree = "<group>"; };
+		452684B218F748D700DA409C /* stream_configuration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stream_configuration.cpp; sourceTree = "<group>"; };
+		452684B318F748D700DA409C /* stream_configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stream_configuration.h; sourceTree = "<group>"; };
+		452684B518F748D700DA409C /* FSAudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAudioController.h; sourceTree = "<group>"; };
+		452684B618F748D700DA409C /* FSAudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAudioController.m; sourceTree = "<group>"; };
+		452684B718F748D700DA409C /* FSAudioStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAudioStream.h; sourceTree = "<group>"; };
+		452684B818F748D700DA409C /* FSAudioStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FSAudioStream.mm; sourceTree = "<group>"; };
+		452684B918F748D700DA409C /* FSCheckContentTypeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCheckContentTypeRequest.h; sourceTree = "<group>"; };
+		452684BA18F748D700DA409C /* FSCheckContentTypeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCheckContentTypeRequest.m; sourceTree = "<group>"; };
+		452684BB18F748D700DA409C /* FSParsePlaylistRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSParsePlaylistRequest.h; sourceTree = "<group>"; };
+		452684BC18F748D700DA409C /* FSParsePlaylistRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSParsePlaylistRequest.m; sourceTree = "<group>"; };
+		452684BD18F748D700DA409C /* FSParseRssPodcastFeedRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSParseRssPodcastFeedRequest.h; sourceTree = "<group>"; };
+		452684BE18F748D700DA409C /* FSParseRssPodcastFeedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSParseRssPodcastFeedRequest.m; sourceTree = "<group>"; };
+		452684BF18F748D700DA409C /* FSPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPlaylistItem.h; sourceTree = "<group>"; };
+		452684C018F748D700DA409C /* FSPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPlaylistItem.m; sourceTree = "<group>"; };
+		452684C118F748D700DA409C /* FSXMLHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSXMLHttpRequest.h; sourceTree = "<group>"; };
+		452684C218F748D700DA409C /* FSXMLHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSXMLHttpRequest.m; sourceTree = "<group>"; };
+		452684C318F748D700DA409C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		452684C418F748D700DA409C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		452684D418F7493800DA409C /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		452684D618F7494700DA409C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		452684D818F7494D00DA409C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		455E918318E0A6C50079A994 /* logo_font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_font.png; sourceTree = "<group>"; };
 		455E918518E0A7F00079A994 /* logo_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_back.png; sourceTree = "<group>"; };
 		457908F518D3481900292173 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -112,6 +160,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				452684D918F7494D00DA409C /* CFNetwork.framework in Frameworks */,
+				452684D718F7494700DA409C /* AudioToolbox.framework in Frameworks */,
+				452684D518F7493800DA409C /* libxml2.dylib in Frameworks */,
 				4502D0FC18C9F7F800C25E76 /* AVFoundation.framework in Frameworks */,
 				4502D0F918C9F7EE00C25E76 /* CoreMedia.framework in Frameworks */,
 				4502D0FA18C9F7EE00C25E76 /* MediaPlayer.framework in Frameworks */,
@@ -156,6 +207,9 @@
 		45237B2418C9CCBC00A20A61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				452684D818F7494D00DA409C /* CFNetwork.framework */,
+				452684D618F7494700DA409C /* AudioToolbox.framework */,
+				452684D418F7493800DA409C /* libxml2.dylib */,
 				4502D0FB18C9F7F800C25E76 /* AVFoundation.framework */,
 				4502D0F718C9F7EE00C25E76 /* CoreMedia.framework */,
 				4502D0F818C9F7EE00C25E76 /* MediaPlayer.framework */,
@@ -170,6 +224,7 @@
 		45237B2B18C9CCBC00A20A61 /* Hardstep radio */ = {
 			isa = PBXGroup;
 			children = (
+				452684D318F748DE00DA409C /* Freestreamer Lib */,
 				FFE4F63E18F1AA8A00D7E63C /* TOUCHJSON */,
 				45237B3418C9CCBC00A20A61 /* AppDelegate.h */,
 				45237B3518C9CCBC00A20A61 /* AppDelegate.m */,
@@ -211,6 +266,57 @@
 				45237B4D18C9CCBC00A20A61 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		452684A718F748D700DA409C /* astreamer */ = {
+			isa = PBXGroup;
+			children = (
+				452684A818F748D700DA409C /* audio_queue.cpp */,
+				452684A918F748D700DA409C /* audio_queue.h */,
+				452684AA18F748D700DA409C /* audio_stream.cpp */,
+				452684AB18F748D700DA409C /* audio_stream.h */,
+				452684AC18F748D700DA409C /* file_output.cpp */,
+				452684AD18F748D700DA409C /* file_output.h */,
+				452684AE18F748D700DA409C /* http_stream.cpp */,
+				452684AF18F748D700DA409C /* http_stream.h */,
+				452684B018F748D700DA409C /* id3_parser.cpp */,
+				452684B118F748D700DA409C /* id3_parser.h */,
+				452684B218F748D700DA409C /* stream_configuration.cpp */,
+				452684B318F748D700DA409C /* stream_configuration.h */,
+			);
+			path = astreamer;
+			sourceTree = "<group>";
+		};
+		452684B418F748D700DA409C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				452684B518F748D700DA409C /* FSAudioController.h */,
+				452684B618F748D700DA409C /* FSAudioController.m */,
+				452684B718F748D700DA409C /* FSAudioStream.h */,
+				452684B818F748D700DA409C /* FSAudioStream.mm */,
+				452684B918F748D700DA409C /* FSCheckContentTypeRequest.h */,
+				452684BA18F748D700DA409C /* FSCheckContentTypeRequest.m */,
+				452684BB18F748D700DA409C /* FSParsePlaylistRequest.h */,
+				452684BC18F748D700DA409C /* FSParsePlaylistRequest.m */,
+				452684BD18F748D700DA409C /* FSParseRssPodcastFeedRequest.h */,
+				452684BE18F748D700DA409C /* FSParseRssPodcastFeedRequest.m */,
+				452684BF18F748D700DA409C /* FSPlaylistItem.h */,
+				452684C018F748D700DA409C /* FSPlaylistItem.m */,
+				452684C118F748D700DA409C /* FSXMLHttpRequest.h */,
+				452684C218F748D700DA409C /* FSXMLHttpRequest.m */,
+				452684C318F748D700DA409C /* Reachability.h */,
+				452684C418F748D700DA409C /* Reachability.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		452684D318F748DE00DA409C /* Freestreamer Lib */ = {
+			isa = PBXGroup;
+			children = (
+				452684A718F748D700DA409C /* astreamer */,
+				452684B418F748D700DA409C /* Common */,
+			);
+			name = "Freestreamer Lib";
 			sourceTree = "<group>";
 		};
 		455E656618CA8A3000721641 /* Images */ = {
@@ -316,7 +422,7 @@
 				ORGANIZATIONNAME = "Alex Rodshtein";
 				TargetAttributes = {
 					45237B2118C9CCBC00A20A61 = {
-						DevelopmentTeam = 7DP758TK3A;
+						DevelopmentTeam = GTR9YMU878;
 						SystemCapabilities = {
 							com.apple.InterAppAudio = {
 								enabled = 0;
@@ -391,11 +497,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				452684CD18F748D700DA409C /* FSCheckContentTypeRequest.m in Sources */,
+				452684D118F748D700DA409C /* FSXMLHttpRequest.m in Sources */,
 				45237B3618C9CCBC00A20A61 /* AppDelegate.m in Sources */,
+				452684CE18F748D700DA409C /* FSParsePlaylistRequest.m in Sources */,
 				45237B3218C9CCBC00A20A61 /* main.m in Sources */,
 				FFE4F63C18F1AA8200D7E63C /* CJSONSerializer.m in Sources */,
+				452684C818F748D700DA409C /* http_stream.cpp in Sources */,
+				452684C918F748D700DA409C /* id3_parser.cpp in Sources */,
+				452684D018F748D700DA409C /* FSPlaylistItem.m in Sources */,
+				452684C718F748D700DA409C /* file_output.cpp in Sources */,
 				457908F718D3481900292173 /* MainViewController.m in Sources */,
+				452684C518F748D700DA409C /* audio_queue.cpp in Sources */,
+				452684CF18F748D700DA409C /* FSParseRssPodcastFeedRequest.m in Sources */,
+				452684CA18F748D700DA409C /* stream_configuration.cpp in Sources */,
+				452684D218F748D700DA409C /* Reachability.m in Sources */,
 				FFE4F63B18F1AA8200D7E63C /* CJSONDeserializer.m in Sources */,
+				452684C618F748D700DA409C /* audio_stream.cpp in Sources */,
+				452684CC18F748D700DA409C /* FSAudioStream.mm in Sources */,
+				452684CB18F748D700DA409C /* FSAudioController.m in Sources */,
 				FFE4F63D18F1AA8200D7E63C /* NSDictionary_JSONExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,10 +645,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hardstep radio/Hardstep radio-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "Hardstep radio/Hardstep radio-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -542,10 +668,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hardstep radio/Hardstep radio-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "Hardstep radio/Hardstep radio-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

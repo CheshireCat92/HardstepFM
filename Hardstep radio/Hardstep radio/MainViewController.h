@@ -11,14 +11,14 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <Accelerate/Accelerate.h>
 #import "CJSONDeserializer.h"
-
+#import "FSAudioStream.h"
+#import "FSAudioController.h"
 
 @interface MainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
-    AVAsset *asset;
-    AVPlayerItem *playerItem;
-    AVPlayer *player;
-    
+    FSAudioController *audioController;
+    FSAudioStream *audioStream;
+
     //мета данные
     NSMutableString *source;
     
@@ -51,7 +51,7 @@
 @property (strong, nonatomic)UIButton *backToTableViewButton;
 @property (strong, nonatomic)UIButton *soundcloudDownloadTrackButton;
 @property (strong, nonatomic)UIButton *itunesBuyTrackButton;
-@property (strong,nonatomic)UIImageView *songCoverImageView;
+@property (strong, nonatomic)UIImageView *songCoverImageView;
 @property (strong, nonatomic)UILabel *songArtistLabel;
 @property (strong, nonatomic)UILabel *songNameLabel;
 @property (strong, nonatomic)UILabel *songAlbumNameLabel;
@@ -67,16 +67,7 @@
 @property (strong, nonatomic) NSString* trackId;
 @property (strong, nonatomic) NSString* trackName;
 
-
-
 @property NSString *source;
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context;
-- (BOOL)isPlaying;
-- (void)playPause;
 
 - (IBAction)play:(id)sender;
 - (IBAction)pause:(id)sender;
