@@ -277,11 +277,13 @@
                     }
                 }
                 [self textAnimationInLabel];
+                
                 [songsDidPlayedMutableArray addObject:source];
                 
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
                 [trackTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                 
+
             }
         }
     }
@@ -313,7 +315,6 @@
     playButton.hidden = NO;
     pauseButton.hidden = YES;
 }
-
 
 
 #pragma mark - TableView functions and Methods
@@ -431,7 +432,7 @@
     {
         [UIView animateWithDuration:0.5f animations:^
          {
-             self.containerView.frame = CGRectMake(0, 500,320, 389);
+             self.containerView.frame = CGRectMake(0, self.view.frame.size.height-70,320, 389);
              NSLog(@"закрыли");
              //[self tableViewInAnimation];
          }
@@ -445,7 +446,7 @@
         [UIView animateWithDuration:0.5f animations:^
          {
              
-             self.containerView.frame = CGRectMake(0, 179,320, 389);
+             self.containerView.frame = CGRectMake(0,self.view.frame.size.height-390,320, 389);
              NSLog(@"открыли");
              
          }
