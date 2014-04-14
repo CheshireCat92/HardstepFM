@@ -19,7 +19,7 @@
 
 @implementation MainViewController
 @synthesize playButton, pauseButton, source;
-@synthesize containerView,rootVIew,descriptionContainerView;//вьюха - контейнер, рут вью
+@synthesize containerView,rootVIew,descriptionContainerView,activitiViewSaw;//вьюха - контейнер, рут вью, активити вью
 @synthesize openCloseModalTableView,addSameDataTestButton,backToTableViewButton,soundcloudDownloadTrackButton,itunesBuyTrackButton;//кнопка
 @synthesize trackTableView;//табличка
 @synthesize modalViewIsShow;//булеановские переменные
@@ -37,7 +37,7 @@
     [super viewDidLoad];
     
     songsDidPlayedMutableArray = [NSMutableArray new];
-    iterator+=1;
+    iterator=0;
     
     pauseButton.hidden = YES;
     
@@ -291,6 +291,12 @@
     [descriptionContainerView bringSubviewToFront:songCoverImageView];
     
     
+    activitiViewSaw = [[UIImageView alloc]initWithFrame:CGRectMake(240, 265, 50, 50)];
+    activitiViewSaw.backgroundColor = [UIColor clearColor];
+    activitiViewSaw.image = [UIImage imageNamed:@"SawButton"];
+    [descriptionContainerView addSubview:activitiViewSaw];
+    [descriptionContainerView bringSubviewToFront:activitiViewSaw];
+    
 }
 
 #pragma mark - Stream Functions
@@ -310,16 +316,18 @@
     source = streamInfo;
     nowPlayingLabel1.text = [NSString stringWithFormat:@"%@",source];
     nowPlayingLabel2.text = [NSString stringWithFormat:@"%@",source];
+    nowPlayingLabel1.text = nowPlayingLabel2.text;
+    [self addDataToTableView:source];
 
     NSLog(@"source is - %@",source);
     if (source.length >= 25)//числа будут примерно в диапазоне 15-20
     {
         NSLog(@"Анимация");
-        [self textAnimationInLabel];
+        [self textAnimationInLabel:NO];
     }
     else
     {
-        //[self textAnimationInLabel];
+        [self textAnimationInLabel:YES];
     }
     NSLog(@"Song played - %@",streamInfo);
     
@@ -472,16 +480,31 @@
 {
     [self tableViewOutAnimation];
     //NSString *newPath = [[NSString alloc]initWithString:[self createSearchITunesURLfromMetadataString:source]];
-    [self parseJSONandCreateITunesBuyLinkWithSource:source];
-    [self addDataToDescriptionView];
+    [self spinActivitySaw:NO];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+       
+        [self parseJSONandCreateITunesBuyLinkWithSource:source];
+        [self addDataToDescriptionView];
+        [self spinActivitySaw:YES];
+    });
+    
     
 
+}
+
+-(void)addDataToTableView:(NSMutableString*)string
+{
+    
+    [songsDidPlayedMutableArray insertObject:string atIndex:iterator];
+    [self.trackTableView reloadData];
+    iterator++;
+    
 }
 
 
 #pragma mark custom Functions
 
--(void)textAnimationInLabel
+-(void)textAnimationInLabel:(BOOL)finished
 {
         [UILabel animateWithDuration:15.5f
                            delay:0.5f
@@ -495,6 +518,22 @@
     completion:^(BOOL finished)
     {
     }];
+    
+    if (finished == YES) {
+        [UILabel animateWithDuration:15.5f
+                               delay:0.5f
+                             options: UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAutoreverse
+                          animations:^
+         {
+             nowPlayingLabel1.transform = CGAffineTransformIdentity;
+             nowPlayingLabel2.transform = CGAffineTransformIdentity;
+             
+         }
+                          completion:^(BOOL finished)
+         {
+         }];
+
+    };
 
 }
 
@@ -538,7 +577,7 @@
          {
              self.containerView.frame = CGRectMake(0, self.view.frame.size.height-70,320, 389);
              NSLog(@"закрыли");
-             //[self tableViewInAnimation];
+             
          }
          ];
         modalViewIsShow = NO;
@@ -605,7 +644,9 @@
             }
             [titleNameString deleteCharactersInRange:NSMakeRange(0, i+2)];
             NSLog(@"1Artist name is %@",artistNameString);
+            artistName = artistNameString; //записываем на всякий пожарный
             NSLog(@"2Song title is %@",titleNameString);
+            trackName = titleNameString; //если не получили ответа с тунца
             break;
         }
     }
@@ -673,61 +714,86 @@
     NSMutableDictionary *resultJsonDict = [JsonDeserializer deserializeAsDictionary:jsonData  error:&error];
     NSLog(@"result Json dict is - %@",resultJsonDict);
     //сливаем всю ифну об артисте в новый словарик
-    NSDictionary *artistInfo = [resultJsonDict objectForKey:@"results"];
-    NSLog(@"artist info is - %@",artistInfo);
-    NSLog(@"artist id is - %@",[artistInfo valueForKey:@"artistId"]);
-    NSMutableArray *tmpArray = [[NSMutableArray alloc]init];
-    //каждое значение - блядский словарь
-    [tmpArray insertObject:[artistInfo valueForKey:@"artistId"] atIndex:0];
-    artistId = [tmpArray objectAtIndex:0];
-    [tmpArray insertObject:[artistInfo valueForKey:@"artistName"] atIndex:1];
-    artistName = [tmpArray objectAtIndex:1];
-    [tmpArray insertObject:[artistInfo valueForKey:@"artworkUrl100"]atIndex:2];
-    artworkUrl100 =[tmpArray objectAtIndex:2];
-    [tmpArray insertObject:[artistInfo valueForKey:@"collectionId"]atIndex:3];
-    collectionId = [tmpArray objectAtIndex:3];
-    [tmpArray insertObject:[artistInfo valueForKey:@"collectionName"]atIndex:4];
-    collectionName = [tmpArray objectAtIndex:4];
-    [tmpArray insertObject:[artistInfo valueForKey:@"trackId"]atIndex:5];
-    trackId = [tmpArray objectAtIndex:5];
-    [tmpArray insertObject:[artistInfo valueForKey:@"trackName"]atIndex:6];
-    trackName = [tmpArray objectAtIndex:6];
-    fullArtistInfo = [[NSMutableArray alloc]initWithObjects:artistId,artistName,artworkUrl100,collectionName,collectionId,trackId,trackName, nil];
-    NSLog(@"newTMP string info is %@", fullArtistInfo);
-    for (int i =0; i<fullArtistInfo.count; i++) {
-        if (i == 0 )
-        {
-            NSArray *tmpArray2 = [[NSArray alloc]initWithArray:[fullArtistInfo objectAtIndex:i]];
-            NSNumber *theNwewObject = [[NSNumber alloc]initWithLong:[tmpArray2 objectAtIndex:0]];
-            [fullArtistInfo replaceObjectAtIndex:i withObject:theNwewObject];
-            
-        }
-        else if (i == 4)
+    NSMutableArray *tmpArray = [[NSMutableArray alloc]init];//временный арей
+    NSNumber *resultCount = [resultJsonDict objectForKey:@"resultCount"];
+    NSLog(@"result count = %@",resultCount);
+    if (resultCount == 0)
+    {
+        fullArtistInfo = [[NSMutableArray alloc]initWithObjects:artistId,artistName,artworkUrl100,collectionName,collectionId,trackId,trackName, nil];
+        artistId = @"";
+        [fullArtistInfo insertObject:artistId atIndex:0];
+        //artistName = @""; не присваеваем, так как
+        [fullArtistInfo insertObject:artistName atIndex:1];
+        artworkUrl100 =@"http://www.hardstep.fm/img/hardstep-fm-logo.png";
+        [fullArtistInfo insertObject:artworkUrl100 atIndex:2];
+        collectionId = @"";
+        [fullArtistInfo insertObject:collectionId atIndex:3];
+        collectionName =@"";
+        [fullArtistInfo insertObject:collectionName atIndex:4];
+        trackId = @"";
+        [fullArtistInfo insertObject:trackId atIndex:5];
+        //trackName = @""; эти уже забиты в другой функции
+        [fullArtistInfo insertObject:trackName atIndex:6];
+        
+    }
+    else
+    {
+        NSDictionary *artistInfo = [resultJsonDict objectForKey:@"results"];
+        NSLog(@"artist info is - %@",artistInfo);
+        NSLog(@"artist id is - %@",[artistInfo valueForKey:@"artistId"]);
+        
+        //каждое значение - блядский словарь
+        [tmpArray insertObject:[artistInfo valueForKey:@"artistId"] atIndex:0];
+        artistId = [tmpArray objectAtIndex:0];
+        [tmpArray insertObject:[artistInfo valueForKey:@"artistName"] atIndex:1];
+        artistName = [tmpArray objectAtIndex:1];
+        [tmpArray insertObject:[artistInfo valueForKey:@"artworkUrl100"]atIndex:2];
+        artworkUrl100 =[tmpArray objectAtIndex:2];
+        [tmpArray insertObject:[artistInfo valueForKey:@"collectionId"]atIndex:3];
+        collectionId = [tmpArray objectAtIndex:3];
+        [tmpArray insertObject:[artistInfo valueForKey:@"collectionName"]atIndex:4];
+        collectionName = [tmpArray objectAtIndex:4];
+        [tmpArray insertObject:[artistInfo valueForKey:@"trackId"]atIndex:5];
+        trackId = [tmpArray objectAtIndex:5];
+        [tmpArray insertObject:[artistInfo valueForKey:@"trackName"]atIndex:6];
+        trackName = [tmpArray objectAtIndex:6];
+        fullArtistInfo = [[NSMutableArray alloc]initWithObjects:artistId,artistName,artworkUrl100,collectionName,collectionId,trackId,trackName, nil];
+        NSLog(@"newTMP string info is %@", fullArtistInfo);
+        for (int i =0; i<fullArtistInfo.count; i++) {
+            if (i == 0 )
             {
                 NSArray *tmpArray2 = [[NSArray alloc]initWithArray:[fullArtistInfo objectAtIndex:i]];
                 NSNumber *theNwewObject = [[NSNumber alloc]initWithLong:[tmpArray2 objectAtIndex:0]];
                 [fullArtistInfo replaceObjectAtIndex:i withObject:theNwewObject];
                 
             }
-        else if (i == 5 )
+            else if (i == 4)
                 {
                     NSArray *tmpArray2 = [[NSArray alloc]initWithArray:[fullArtistInfo objectAtIndex:i]];
                     NSNumber *theNwewObject = [[NSNumber alloc]initWithLong:[tmpArray2 objectAtIndex:0]];
                     [fullArtistInfo replaceObjectAtIndex:i withObject:theNwewObject];
                     
                 }
-        else
-        {
-            NSArray *tmpArray2 = [[NSArray alloc]initWithArray:[fullArtistInfo objectAtIndex:i]];
-            NSString *theNwewObject = [[NSString alloc]initWithString:[tmpArray2 objectAtIndex:0]];
-            [fullArtistInfo replaceObjectAtIndex:i withObject:theNwewObject];//данный массив содержит инфу о исполнителе-песне. Необходимо создать общий массив, который будет хранить все массивы в духе fullArtistInfo
+            else if (i == 5 )
+                    {
+                        NSArray *tmpArray2 = [[NSArray alloc]initWithArray:[fullArtistInfo objectAtIndex:i]];
+                        NSNumber *theNwewObject = [[NSNumber alloc]initWithLong:[tmpArray2 objectAtIndex:0]];
+                        [fullArtistInfo replaceObjectAtIndex:i withObject:theNwewObject];
+                        
+                    }
+            else
+            {
+                NSArray *tmpArray2 = [[NSArray alloc]initWithArray:[fullArtistInfo objectAtIndex:i]];
+                NSString *theNwewObject = [[NSString alloc]initWithString:[tmpArray2 objectAtIndex:0]];
+                [fullArtistInfo replaceObjectAtIndex:i withObject:theNwewObject];//данный массив содержит инфу о исполнителе-песне. Необходимо создать общий массив, который будет хранить все массивы в духе fullArtistInfo
+                
+            }
+        
             
         }
-    
         
+        NSLog(@"fullArtistInfo string info is %@", fullArtistInfo);
     }
-    
-    NSLog(@"fullArtistInfo string info is %@", fullArtistInfo);
 }
 
 -(NSMutableString*)decode:(NSMutableString*)BadSourceString
@@ -735,6 +801,11 @@
     [BadSourceString dataUsingEncoding:NSWindowsCP1251StringEncoding];
     NSLog(@"bad string - %@", BadSourceString);
     return BadSourceString;
+}
+
+-(void)createBuyLinkForiTunes
+{
+    
 }
 
 -(void)addDataToDescriptionView
@@ -754,6 +825,38 @@
     NSString *albumeNameString = [[NSString alloc]initWithString:[fullArtistInfo objectAtIndex:3]];
     songAlbumNameLabel.text = albumeNameString;
     
+}
+
+-(void)spinActivitySaw:(BOOL)finished
+{
+    float degrees = 90.0f;
+    float radians = (degrees/180)*M_PI;
+    [UIImageView animateWithDuration:0.1f
+                               delay:0.1f
+                             options:UIViewAnimationOptionCurveLinear|UIViewAnimationOptionRepeat
+                          animations:
+     ^{
+                              
+                              activitiViewSaw.transform = CGAffineTransformMakeRotation(radians);
+         
+     }
+     
+                          completion:nil];
+   
+    if (finished == YES)
+    {
+        [UIImageView animateWithDuration:0.1f
+                                   delay:0.1f
+                                 options:UIViewAnimationOptionCurveLinear
+                              animations:
+         ^{
+                                  
+                                  activitiViewSaw.transform = CGAffineTransformIdentity;
+             
+         }
+                            completion:nil];
+    
+    }
 }
 
 @end

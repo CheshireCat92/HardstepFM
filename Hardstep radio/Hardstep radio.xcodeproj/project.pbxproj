@@ -62,6 +62,7 @@
 		FFA6422B18E2E9DE005389E7 /* rightTableViewCellBoarder.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA6422618E2E9DE005389E7 /* rightTableViewCellBoarder.png */; };
 		FFA6422C18E2E9DE005389E7 /* tableViewCell.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA6422718E2E9DE005389E7 /* tableViewCell.png */; };
 		FFA6423018E2F4F3005389E7 /* tableViewCellPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = FFA6422F18E2F4F3005389E7 /* tableViewCellPressed.png */; };
+		FFD628D318FB0C99008CB2A0 /* SawButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FFD628D218FB0C99008CB2A0 /* SawButton.png */; };
 		FFE4F63B18F1AA8200D7E63C /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE4F63518F1AA8200D7E63C /* CJSONDeserializer.m */; };
 		FFE4F63C18F1AA8200D7E63C /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE4F63718F1AA8200D7E63C /* CJSONSerializer.m */; };
 		FFE4F63D18F1AA8200D7E63C /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FFE4F63A18F1AA8200D7E63C /* NSDictionary_JSONExtensions.m */; };
@@ -152,6 +153,7 @@
 		FFA6422618E2E9DE005389E7 /* rightTableViewCellBoarder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightTableViewCellBoarder.png; sourceTree = "<group>"; };
 		FFA6422718E2E9DE005389E7 /* tableViewCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableViewCell.png; sourceTree = "<group>"; };
 		FFA6422F18E2F4F3005389E7 /* tableViewCellPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableViewCellPressed.png; sourceTree = "<group>"; };
+		FFD628D218FB0C99008CB2A0 /* SawButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SawButton.png; sourceTree = "<group>"; };
 		FFE4F63418F1AA8200D7E63C /* CJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDeserializer.h; sourceTree = "<group>"; };
 		FFE4F63518F1AA8200D7E63C /* CJSONDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDeserializer.m; sourceTree = "<group>"; };
 		FFE4F63618F1AA8200D7E63C /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				FF4B8A2718E0889E009467C2 /* Background.png */,
 				455E918518E0A7F00079A994 /* logo_back.png */,
 				FF4B8A2818E0889E009467C2 /* logo.png */,
+				FFD628D218FB0C99008CB2A0 /* SawButton.png */,
 				FF4B8A2918E0889E009467C2 /* Play.png */,
 				FF4B8A2A18E0889E009467C2 /* stop.png */,
 				455E918318E0A6C50079A994 /* logo_font.png */,
@@ -490,6 +493,7 @@
 				FFA6422818E2E9DE005389E7 /* leftTableViewBoarders.png in Resources */,
 				FFA6422B18E2E9DE005389E7 /* rightTableViewCellBoarder.png in Resources */,
 				FFA6421E18E1E73D005389E7 /* tableViewBackground.png in Resources */,
+				FFD628D318FB0C99008CB2A0 /* SawButton.png in Resources */,
 				FFA6421818E1C54E005389E7 /* trackDisplayVar2.png in Resources */,
 				FFA6422A18E2E9DE005389E7 /* rightTableViewBoarders.png in Resources */,
 				455E918418E0A6C50079A994 /* logo_font.png in Resources */,

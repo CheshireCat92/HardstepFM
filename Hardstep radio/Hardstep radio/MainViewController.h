@@ -58,6 +58,7 @@
 @property (strong, nonatomic)UILabel *songNameLabel;
 @property (strong, nonatomic)UILabel *songAlbumNameLabel;
 @property (strong, nonatomic)NSURL *ituneBuyLink;
+@property (strong, nonatomic)UIImageView *activitiViewSaw;
 
 //artistInfo
 @property (strong, nonatomic) NSMutableArray* fullArtistInfo;
