@@ -43,9 +43,9 @@
 		455E918618E0A7F00079A994 /* logo_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 455E918518E0A7F00079A994 /* logo_back.png */; };
 		457908F718D3481900292173 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457908F618D3481900292173 /* MainViewController.m */; };
 		457908F918D396F600292173 /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 457908F818D396F500292173 /* icon-120.png */; };
+		45DCE31F18FF0C350075E006 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 45DCE31E18FF0C350075E006 /* logo.png */; };
 		FF4B8A2618E06BEB009467C2 /* Danger.otf in Resources */ = {isa = PBXBuildFile; fileRef = FF4B8A2518E06BEB009467C2 /* Danger.otf */; };
 		FF4B8A2B18E0889E009467C2 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4B8A2718E0889E009467C2 /* Background.png */; };
-		FF4B8A2C18E0889E009467C2 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4B8A2818E0889E009467C2 /* logo.png */; };
 		FF4B8A2D18E0889E009467C2 /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4B8A2918E0889E009467C2 /* Play.png */; };
 		FF4B8A2E18E0889E009467C2 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4B8A2A18E0889E009467C2 /* stop.png */; };
 		FF4B8A2F18E0895F009467C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45237B3718C9CCBC00A20A61 /* Main.storyboard */; };
@@ -135,9 +135,9 @@
 		457908F518D3481900292173 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		457908F618D3481900292173 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		457908F818D396F500292173 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
+		45DCE31E18FF0C350075E006 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		FF4B8A2518E06BEB009467C2 /* Danger.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Danger.otf; sourceTree = "<group>"; };
 		FF4B8A2718E0889E009467C2 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
-		FF4B8A2818E0889E009467C2 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		FF4B8A2918E0889E009467C2 /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
 		FF4B8A2A18E0889E009467C2 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
 		FF6A164418F8674000FCBBD6 /* boarderDetailView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boarderDetailView.png; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 				FFA6422E18E2EB03005389E7 /* trackDisplayImages */,
 				FF4B8A2718E0889E009467C2 /* Background.png */,
 				455E918518E0A7F00079A994 /* logo_back.png */,
-				FF4B8A2818E0889E009467C2 /* logo.png */,
+				45DCE31E18FF0C350075E006 /* logo.png */,
 				FFD628D218FB0C99008CB2A0 /* SawButton.png */,
 				FF4B8A2918E0889E009467C2 /* Play.png */,
 				FF4B8A2A18E0889E009467C2 /* stop.png */,
@@ -483,7 +483,6 @@
 				FF4B8A2F18E0895F009467C2 /* Main.storyboard in Resources */,
 				45237B3E18C9CCBC00A20A61 /* Images.xcassets in Resources */,
 				FFA6421C18E1C75D005389E7 /* trackBottomBoarder.png in Resources */,
-				FF4B8A2C18E0889E009467C2 /* logo.png in Resources */,
 				45237B3018C9CCBC00A20A61 /* InfoPlist.strings in Resources */,
 				FF4B8A2618E06BEB009467C2 /* Danger.otf in Resources */,
 				455E918618E0A7F00079A994 /* logo_back.png in Resources */,
@@ -495,6 +494,7 @@
 				FFA6421E18E1E73D005389E7 /* tableViewBackground.png in Resources */,
 				FFD628D318FB0C99008CB2A0 /* SawButton.png in Resources */,
 				FFA6421818E1C54E005389E7 /* trackDisplayVar2.png in Resources */,
+				45DCE31F18FF0C350075E006 /* logo.png in Resources */,
 				FFA6422A18E2E9DE005389E7 /* rightTableViewBoarders.png in Resources */,
 				455E918418E0A6C50079A994 /* logo_font.png in Resources */,
 				FF4B8A2B18E0889E009467C2 /* Background.png in Resources */,
