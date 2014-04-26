@@ -442,7 +442,7 @@
 				ORGANIZATIONNAME = "Alex Rodshtein";
 				TargetAttributes = {
 					45237B2118C9CCBC00A20A61 = {
-						DevelopmentTeam = GTR9YMU878;
+						DevelopmentTeam = 7DP758TK3A;
 						SystemCapabilities = {
 							com.apple.InterAppAudio = {
 								enabled = 0;

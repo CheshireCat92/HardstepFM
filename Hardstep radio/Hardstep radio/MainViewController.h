@@ -24,6 +24,7 @@
     //мета данные
     NSMutableString *source;
     
+    
     IBOutlet UIButton *playButton;
     IBOutlet UIButton *pauseButton;
     
@@ -59,6 +60,7 @@
 @property (strong, nonatomic)UILabel *songAlbumNameLabel;
 @property (strong, nonatomic)NSURL *ituneBuyLink;
 @property (strong, nonatomic)UIImageView *activitiViewSaw;
+@property (strong, nonatomic)NSString *tempSource; //необходимо для корректной работы таблицы (отсутствие повторений одного и того же трека)
 
 //artistInfo
 @property (strong, nonatomic) NSMutableArray* fullArtistInfo;
@@ -69,7 +71,7 @@
 @property (strong, nonatomic) NSString* collectionName;
 @property (strong, nonatomic) NSString* trackId;
 @property (strong, nonatomic) NSString* trackName;
-
+@property (strong, nonatomic) NSMutableString* trackNameSingleValue;
 @property NSString *source;
 
 - (IBAction)play:(id)sender;
