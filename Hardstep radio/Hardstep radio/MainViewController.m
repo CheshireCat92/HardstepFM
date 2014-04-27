@@ -542,7 +542,7 @@
 
 -(void)tableViewOutAnimation
 {
-    [UITableView animateWithDuration:2.0f
+    [UITableView animateWithDuration:0.5f
                                delay:0.1f
                              options:UIViewAnimationOptionCurveEaseInOut
                           animations:^{
@@ -557,7 +557,7 @@
 
 -(void)tableViewInAnimation
 {
-    [UITableView animateWithDuration:2.0f
+    [UITableView animateWithDuration:0.5f
                                delay:0.1f
                              options:UIViewAnimationOptionCurveEaseInOut
                           animations:^{
