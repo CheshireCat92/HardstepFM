@@ -1,0 +1,15 @@
+[submodule "Hardstep radio/CocoaSoundCloudAPI"]
+	path = Hardstep radio/CocoaSoundCloudAPI
+	url = git://github.com/soundcloud/CocoaSoundCloudAPI.git
+[submodule "Hardstep radio/OAuth2Client"]
+	path = Hardstep radio/OAuth2Client
+	url = git://github.com/nxtbgthng/OAuth2Client.git
+[submodule "Hardstep radio/JSONKit"]
+	path = Hardstep radio/JSONKit
+	url = git://github.com/nxtbgthng/JSONKit.git
+[submodule "Hardstep radio/OHAttributedLabel"]
+	path = Hardstep radio/OHAttributedLabel
+	url = git://github.com/nxtbgthng/OHAttributedLabel.git
+[submodule "Hardstep radio/CocoaSoundCloudUI"]
+	path = Hardstep radio/CocoaSoundCloudUI
+	url = git://github.com/soundcloud/CocoaSoundCloudUI.git
